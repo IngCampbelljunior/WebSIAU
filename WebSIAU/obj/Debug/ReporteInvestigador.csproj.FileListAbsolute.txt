@@ -1,0 +1,2 @@
+C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.AssemblyReference.cache
+C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.CoreCompileInputs.cache

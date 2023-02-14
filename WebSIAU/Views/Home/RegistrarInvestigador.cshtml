@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Registrar Investigador";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
+
+@*<link href="~/Content/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/MyStyleFormConsulFecha.css">*@
+
+<div class="jumbotron">
+    <h2>Registrar Investigador</h2>
+
+</div>
+
+<form role="form">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1"
+               placeholder="Enter email">
+    </div>
+</form>

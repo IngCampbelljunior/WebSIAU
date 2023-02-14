@@ -1,0 +1,1497 @@
+﻿@{
+    ViewBag.Title = "Generar Acta de Entrega";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
+
+
+<div class="jumbotron">
+    <h2>Solicitud de Documentos de Atención</h2>
+
+</div>
+
+<form class="form-horizontal" role="form">
+    <!--Fecha radicación de solicitud-->
+    <label class="form-control-label">FECHA SOLICITUD</label>
+    <div class="form-group">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"></path>
+                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+                    </svg>
+                </span>
+                <input type="date" name="fechaSolicitud" id="fechaSolicitud" class="form-control" required>
+            </div>
+        </div>
+    </div>
+
+    <!--Ingreso datos del solicitante-->
+    <label class="form-control-label">DATOS DEL SOLICITANTE</label>
+    <div class="form-group">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="nombre1Solicita" id="nombre1Solicita" class="form-control" placeholder="Primer Nombre" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="nombre2Solicita" id="nombre2Solicita" class="form-control" placeholder="Segundo Nombre" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="apellido1Solicita" id="apellido1Solicita" class="form-control" placeholder="Primer Apellido" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="apellido2Solicita" id="apellido2Solicita" class="form-control" placeholder="Segundo Apellido" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+                        <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"></path>
+                        <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="tipoIDSolicita" id="tipoIDSolicita" class="form-control" list="itemsDoc" placeholder="Tipo de Documento" required>
+                <datalist id="itemsDoc">
+                    <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                    <option value="Carnet Diplomático">Carnet Diplomático</option>
+                    <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                    <option value="NIT">NIT</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="Permiso de Protección Temporal">Permiso de Protección Temporal</option>
+                    <option value="Permiso Especial de Permanencia">Permiso Especial de Permanencia</option>
+                    <option value="Registro Civil">Registro Civil</option>
+                    <option value="Salvoconducto de Permanencia">Salvoconducto de Permanencia</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                    <option value="Venezolano">Venezolano</option>
+                </datalist>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-3">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                        <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="numIDSolicita" id="numIDSolicita" class="form-control" placeholder="Identificación" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-3">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484-.08.08-.162.158-.242.234-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="expedicionIDSolicita" id="expedicionIDSolicita" class="form-control" list="itemsExp" placeholder="Lugar Expedición" required>
+                <datalist id="itemsExp">
+                    <option value="Abejorral (Ant.)">Abejorral (Ant.)</option>
+                    <option value="Abrego (NSa.)">Abrego (NSa.)</option>
+                    <option value="Abriaquí (Ant.)">Abriaquí (Ant.)</option>
+                    <option value="Acacías (Met.)">Acacías (Met.)</option>
+                    <option value="Acandí (Cho.)">Acandí (Cho.)</option>
+                    <option value="Acevedo (Hui.)">Acevedo (Hui.)</option>
+                    <option value="Achí (Bol.)">Achí (Bol.)</option>
+                    <option value="Agrado (Hui.)">Agrado (Hui.)</option>
+                    <option value="Agua de Dios (Cun.)">Agua de Dios (Cun.)</option>
+                    <option value="Aguachica (Ces.)">Aguachica (Ces.)</option>
+                    <option value="Aguada (San.)">Aguada (San.)</option>
+                    <option value="Aguadas (Cal.)">Aguadas (Cal.)</option>
+                    <option value="Aguazul (Cas.)">Aguazul (Cas.)</option>
+                    <option value="Agustín Codazzi (Ces.)">Agustín Codazzi (Ces.)</option>
+                    <option value="Aipe (Hui.)">Aipe (Hui.)</option>
+                    <option value="Albán (Cun.)">Albán (Cun.)</option>
+                    <option value="Albán (Nar.)">Albán (Nar.)</option>
+                    <option value="Albania (Caq.)">Albania (Caq.)</option>
+                    <option value="Albania (LaG.)">Albania (LaG.)</option>
+                    <option value="Albania (San.)">Albania (San.)</option>
+                    <option value="Alcalá (VaC.)">Alcalá (VaC.)</option>
+                    <option value="Aldana (Nar.)">Aldana (Nar.)</option>
+                    <option value="Alejandría (Ant.)">Alejandría (Ant.)</option>
+                    <option value="Algarrobo (Mag.)">Algarrobo (Mag.)</option>
+                    <option value="Algeciras (Hui.)">Algeciras (Hui.)</option>
+                    <option value="Almaguer (Cau.)">Almaguer (Cau.)</option>
+                    <option value="Almeida (Boy.)">Almeida (Boy.)</option>
+                    <option value="Alpujarra (Tol.)">Alpujarra (Tol.)</option>
+                    <option value="Altamira (Hui.)">Altamira (Hui.)</option>
+                    <option value="Alto Baudo (Cho.)">Alto Baudo (Cho.)</option>
+                    <option value="Altos del Rosario (Bol.)">Altos del Rosario (Bol.)</option>
+                    <option value="Alvarado (Tol.)">Alvarado (Tol.)</option>
+                    <option value="Amagá (Ant.)">Amagá (Ant.)</option>
+                    <option value="Amalfi (Ant.)">Amalfi (Ant.)</option>
+                    <option value="Ambalema (Tol.)">Ambalema (Tol.)</option>
+                    <option value="Anapoima (Cun.)">Anapoima (Cun.)</option>
+                    <option value="Ancuyá (Nar.)">Ancuyá (Nar.)</option>
+                    <option value="Andalucía (VaC.)">Andalucía (VaC.)</option>
+                    <option value="Andes (Ant.)">Andes (Ant.)</option>
+                    <option value="Angelópolis (Ant.)">Angelópolis (Ant.)</option>
+                    <option value="Angostura (Ant.)">Angostura (Ant.)</option>
+                    <option value="Anolaima (Cun.)">Anolaima (Cun.)</option>
+                    <option value="Anorí (Ant.)">Anorí (Ant.)</option>
+                    <option value="Anserma (Cal.)">Anserma (Cal.)</option>
+                    <option value="Ansermanuevo (VaC.)">Ansermanuevo (VaC.)</option>
+                    <option value="Anza (Ant.)">Anza (Ant.)</option>
+                    <option value="Anzoátegui (Tol.)">Anzoátegui (Tol.)</option>
+                    <option value="Apartadó (Ant.)">Apartadó (Ant.)</option>
+                    <option value="Apía (Ris.)">Apía (Ris.)</option>
+                    <option value="Apulo (Cun.)">Apulo (Cun.)</option>
+                    <option value="Aquitania (Boy.)">Aquitania (Boy.)</option>
+                    <option value="Aracataca (Mag.)">Aracataca (Mag.)</option>
+                    <option value="Aranzazu (Cal.)">Aranzazu (Cal.)</option>
+                    <option value="Aratoca (San.)">Aratoca (San.)</option>
+                    <option value="Arauca (Ara.)">Arauca (Ara.)</option>
+                    <option value="Arauquita (Ara.)">Arauquita (Ara.)</option>
+                    <option value="Arbeláez (Cun.)">Arbeláez (Cun.)</option>
+                    <option value="Arboleda (Nar.)">Arboleda (Nar.)</option>
+                    <option value="Arboledas (NSa.)">Arboledas (NSa.)</option>
+                    <option value="Arboletes (Ant.)">Arboletes (Ant.)</option>
+                    <option value="Arcabuco (Boy.)">Arcabuco (Boy.)</option>
+                    <option value="Arenal (Bol.)">Arenal (Bol.)</option>
+                    <option value="Argelia (Ant.)">Argelia (Ant.)</option>
+                    <option value="Argelia (VaC.)">Argelia (VaC.)</option>
+                    <option value="Argelia (Cau.)">Argelia (Cau.)</option>
+                    <option value="Ariguaní (Mag.)">Ariguaní (Mag.)</option>
+                    <option value="Arjona (Bol.)">Arjona (Bol.)</option>
+                    <option value="Armenia (Ant.)">Armenia (Ant.)</option>
+                    <option value="Armenia (Qui.)">Armenia (Qui.)</option>
+                    <option value="Armero (Tol.)">Armero (Tol.)</option>
+                    <option value="Arroyohondo (Bol.)">Arroyohondo (Bol.)</option>
+                    <option value="Astrea (Ces.)">Astrea (Ces.)</option>
+                    <option value="Ataco (Tol.)">Ataco (Tol.)</option>
+                    <option value="Atrato (Cho.)">Atrato (Cho.)</option>
+                    <option value="Ayapel (Cor.)">Ayapel (Cor.)</option>
+                    <option value="Bagadó (Cho.)">Bagadó (Cho.)</option>
+                    <option value="Bahía Solano (Cho.)">Bahía Solano (Cho.)</option>
+                    <option value="Bajo Baudó (Cho.)">Bajo Baudó (Cho.)</option>
+                    <option value="Balboa (Cau.)">Balboa (Cau.)</option>
+                    <option value="Balboa (Ris.)">Balboa (Ris.)</option>
+                    <option value="Baranoa (Atl.)">Baranoa (Atl.)</option>
+                    <option value="Baraya (Hui.)">Baraya (Hui.)</option>
+                    <option value="Barbacoas (Nar.)">Barbacoas (Nar.)</option>
+                    <option value="Barbosa (Ant.)">Barbosa (Ant.)</option>
+                    <option value="Barbosa (San.)">Barbosa (San.)</option>
+                    <option value="Barichara (San.)">Barichara (San.)</option>
+                    <option value="Barranca de Upía (Met.)">Barranca de Upía (Met.)</option>
+                    <option value="Barrancabermeja (San.)">Barrancabermeja (San.)</option>
+                    <option value="Barrancas (LaG.)">Barrancas (LaG.)</option>
+                    <option value="Barranco de Loba (Bol.)">Barranco de Loba (Bol.)</option>
+                    <option value="Barranco Minas (Gua.)">Barranco Minas (Gua.)</option>
+                    <option value="Barranquilla (Atl.)">Barranquilla (Atl.)</option>
+                    <option value="Becerril (Ces.)">Becerril (Ces.)</option>
+                    <option value="Belalcázar (Cal.)">Belalcázar (Cal.)</option>
+                    <option value="Belén (Nar.)">Belén (Nar.)</option>
+                    <option value="Belén (Boy.)">Belén (Boy.)</option>
+                    <option value="Belén de Bajirá (Cho.)">Belén de Bajirá (Cho.)</option>
+                    <option value="Belén de Los Andaquies (Caq.)">Belén de Los Andaquies (Caq.)</option>
+                    <option value="Belén de Umbría (Ris.)">Belén de Umbría (Ris.)</option>
+                    <option value="Bello (Ant.)">Bello (Ant.)</option>
+                    <option value="Belmira (Ant.)">Belmira (Ant.)</option>
+                    <option value="Beltrán (Cun.)">Beltrán (Cun.)</option>
+                    <option value="Berbeo (Boy.)">Berbeo (Boy.)</option>
+                    <option value="Betania (Ant.)">Betania (Ant.)</option>
+                    <option value="Betéitiva (Boy.)">Betéitiva (Boy.)</option>
+                    <option value="Betulia (Ant.)">Betulia (Ant.)</option>
+                    <option value="Betulia (San.)">Betulia (San.)</option>
+                    <option value="Bituima (Cun.)">Bituima (Cun.)</option>
+                    <option value="Boavita (Boy.)">Boavita (Boy.)</option>
+                    <option value="Bochalema (NSa.)">Bochalema (NSa.)</option>
+                    <option value="Bogotá D.C.">Bogotá D.C.</option>
+                    <option value="Bojacá (Cun.)">Bojacá (Cun.)</option>
+                    <option value="Bojaya (Cho.)">Bojaya (Cho.)</option>
+                    <option value="Bolívar (San.)">Bolívar (San.)</option>
+                    <option value="Bolívar (VaC.)">Bolívar (VaC.)</option>
+                    <option value="Bolívar (Cau.)">Bolívar (Cau.)</option>
+                    <option value="Bosconia (Ces.)">Bosconia (Ces.)</option>
+                    <option value="Boyacá (Boy.)">Boyacá (Boy.)</option>
+                    <option value="Briceño (Ant.)">Briceño (Ant.)</option>
+                    <option value="Briceño (Boy.)">Briceño (Boy.)</option>
+                    <option value="Bucaramanga (San.)">Bucaramanga (San.)</option>
+                    <option value="Bucarasica (NSa.)">Bucarasica (NSa.)</option>
+                    <option value="Buenaventura (VaC.)">Buenaventura (VaC.)</option>
+                    <option value="Buena Vista (Boy.)">Buena Vista (Boy.)</option>
+                    <option value="Buenavista (Qui.)">Buenavista (Qui.)</option>
+                    <option value="Buenavista (Cor.)">Buenavista (Cor.)</option>
+                    <option value="Buenavista (Suc.)">Buenavista (Suc.)</option>
+                    <option value="Buenos Aires (Cau.)">Buenos Aires (Cau.)</option>
+                    <option value="Buesaco (Nar.)">Buesaco (Nar.)</option>
+                    <option value="Bugalagrande (VaC.)">Bugalagrande (VaC.)</option>
+                    <option value="Buriticá (Ant.)">Buriticá (Ant.)</option>
+                    <option value="Busbanzá (Boy.)">Busbanzá (Boy.)</option>
+                    <option value="Cabrera (Cun.)">Cabrera (Cun.)</option>
+                    <option value="Cabrera (San.)">Cabrera (San.)</option>
+                    <option value="Cabuyaro (Met.)">Cabuyaro (Met.)</option>
+                    <option value="Cacahual (Gua.)">Cacahual (Gua.)</option>
+                    <option value="Cáceres (Ant.)">Cáceres (Ant.)</option>
+                    <option value="Cachipay (Cun.)">Cachipay (Cun.)</option>
+                    <option value="Cachirá (NSa.)">Cachirá (NSa.)</option>
+                    <option value="Cácota (NSa.)">Cácota (NSa.)</option>
+                    <option value="Caicedo (Ant.)">Caicedo (Ant.)</option>
+                    <option value="Caicedonia (VaC.)">Caicedonia (VaC.)</option>
+                    <option value="Caimito (Suc.)">Caimito (Suc.)</option>
+                    <option value="Cajamarca (Tol.)">Cajamarca (Tol.)</option>
+                    <option value="Cajibío (Cau.)">Cajibío (Cau.)</option>
+                    <option value="Cajicá (Cun.)">Cajicá (Cun.)</option>
+                    <option value="Calamar (Bol.)">Calamar (Bol.)</option>
+                    <option value="Calamar (Guv.)">Calamar (Guv.)</option>
+                    <option value="Calarca (Qui.)">Calarca (Qui.)</option>
+                    <option value="Caldas (Ant.)">Caldas (Ant.)</option>
+                    <option value="Caldas (Boy.)">Caldas (Boy.)</option>
+                    <option value="Caldono (Cau.)">Caldono (Cau.)</option>
+                    <option value="Cali (VaC.)">Cali (VaC.)</option>
+                    <option value="California (San.)">California (San.)</option>
+                    <option value="Calima (VaC.)">Calima (VaC.)</option>
+                    <option value="Caloto (Cau.)">Caloto (Cau.)</option>
+                    <option value="Campamento (Ant.)">Campamento (Ant.)</option>
+                    <option value="Campo de la Cruz (Atl.)">Campo de la Cruz (Atl.)</option>
+                    <option value="Campoalegre (Hui.)">Campoalegre (Hui.)</option>
+                    <option value="Campohermoso (Boy.)">Campohermoso (Boy.)</option>
+                    <option value="Canalete (Cor.)">Canalete (Cor.)</option>
+                    <option value="Cañasgordas (Ant.)">Cañasgordas (Ant.)</option>
+                    <option value="Candelaria (VaC.)">Candelaria (VaC.)</option>
+                    <option value="Candelaria (Atl.)">Candelaria (Atl.)</option>
+                    <option value="Cantagallo (Bol.)">Cantagallo (Bol.)</option>
+                    <option value="Caparrapí (Cun.)">Caparrapí (Cun.)</option>
+                    <option value="Capitanejo (San.)">Capitanejo (San.)</option>
+                    <option value="Caqueza (Cun.)">Caqueza (Cun.)</option>
+                    <option value="Caracolí (Ant.)">Caracolí (Ant.)</option>
+                    <option value="Caramanta (Ant.)">Caramanta (Ant.)</option>
+                    <option value="Carcasí (San.)">Carcasí (San.)</option>
+                    <option value="Carepa (Ant.)">Carepa (Ant.)</option>
+                    <option value="Carmen de Apicalá (Tol.)">Carmen de Apicalá (Tol.)</option>
+                    <option value="Carmen de Carupa (Cun.)">Carmen de Carupa (Cun.)</option>
+                    <option value="Carmen del Darien (Cho.)">Carmen del Darien (Cho.)</option>
+                    <option value="Carmen del Viboral">Carmen del Viboral</option>
+                    <option value="Carolina (Ant.)">Carolina (Ant.)</option>
+                    <option value="Cartagena (Bol.)">Cartagena (Bol.)</option>
+                    <option value="Cartagena del Chairá (Caq.)">Cartagena del Chairá (Caq.)</option>
+                    <option value="Cartago (VaC.)">Cartago (VaC.)</option>
+                    <option value="Carurú (Vau.)">Carurú (Vau.)</option>
+                    <option value="Casabianca (Tol.)">Casabianca (Tol.)</option>
+                    <option value="Castilla La Nueva (Met.)">Castilla La Nueva (Met.)</option>
+                    <option value="Caucasia (Ant.)">Caucasia (Ant.)</option>
+                    <option value="Cepitá (San.)">Cepitá (San.)</option>
+                    <option value="Cereté (Cor.)">Cereté (Cor.)</option>
+                    <option value="Cerinza (Boy.)">Cerinza (Boy.)</option>
+                    <option value="Cerrito (San.)">Cerrito (San.)</option>
+                    <option value="Cerro San Antonio (Mag.)">Cerro San Antonio (Mag.)</option>
+                    <option value="Cértegui (Cho.)">Cértegui (Cho.)</option>
+                    <option value="Chachagüí (Nar.)">Chachagüí (Nar.)</option>
+                    <option value="Chaguaní (Cun.)">Chaguaní (Cun.)</option>
+                    <option value="Chalán (Suc.)">Chalán (Suc.)</option>
+                    <option value="Chameza (Cas.)">Chameza (Cas.)</option>
+                    <option value="Chaparral (Tol.)">Chaparral (Tol.)</option>
+                    <option value="Charalá (San.)">Charalá (San.)</option>
+                    <option value="Charta (San.)">Charta (San.)</option>
+                    <option value="Chía (Cun.)">Chía (Cun.)</option>
+                    <option value="Chivolo (Mag.)">Chivolo (Mag.)</option>
+                    <option value="Chigorodó (Ant.)">Chigorodó (Ant.)</option>
+                    <option value="Chima (Cor.)">Chima (Cor.)</option>
+                    <option value="Chimá (San.)">Chimá (San.)</option>
+                    <option value="Chimichagua (Ces.)">Chimichagua (Ces.)</option>
+                    <option value="Chinácota (NSa.)">Chinácota (NSa.)</option>
+                    <option value="Chinavita (Boy.)">Chinavita (Boy.)</option>
+                    <option value="Chinchiná (Cal.)">Chinchiná (Cal.)</option>
+                    <option value="Chinú (Cor.)">Chinú (Cor.)</option>
+                    <option value="Chipaque (Cun.)">Chipaque (Cun.)</option>
+                    <option value="Chipatá (San.)">Chipatá (San.)</option>
+                    <option value="Chiquinquirá (Boy.)">Chiquinquirá (Boy.)</option>
+                    <option value="Chíquiza (Boy.)">Chíquiza (Boy.)</option>
+                    <option value="Chiriguaná (Ces.)">Chiriguaná (Ces.)</option>
+                    <option value="Chiscas (Boy.)">Chiscas (Boy.)</option>
+                    <option value="Chita (Boy.)">Chita (Boy.)</option>
+                    <option value="Chitagá (NSa.)">Chitagá (NSa.)</option>
+                    <option value="Chitaraque (Boy.)">Chitaraque (Boy.)</option>
+                    <option value="Chivatá (Boy.)">Chivatá (Boy.)</option>
+                    <option value="Chivor (Boy.)">Chivor (Boy.)</option>
+                    <option value="Choachí (Cun.)">Choachí (Cun.)</option>
+                    <option value="Chocontá (Cun.)">Chocontá (Cun.)</option>
+                    <option value="Cicuco (Bol.)">Cicuco (Bol.)</option>
+                    <option value="Ciénaga (Mag.)">Ciénaga (Mag.)</option>
+                    <option value="Ciénaga de Oro (Cor.)">Ciénaga de Oro (Cor.)</option>
+                    <option value="Ciénega (Boy.)">Ciénega (Boy.)</option>
+                    <option value="Cimitarra (San.)">Cimitarra (San.)</option>
+                    <option value="Circasia (Qui.)">Circasia (Qui.)</option>
+                    <option value="Cisneros (Ant.)">Cisneros (Ant.)</option>
+                    <option value="Ciudad Bolívar (Ant.)">Ciudad Bolívar (Ant.)</option>
+                    <option value="Clemencia (Bol.)">Clemencia (Bol.)</option>
+                    <option value="Cocorná (Ant.)">Cocorná (Ant.)</option>
+                    <option value="Coello (Tol.)">Coello (Tol.)</option>
+                    <option value="Cogua (Cun.)">Cogua (Cun.)</option>
+                    <option value="Colombia (Hui.)">Colombia (Hui.)</option>
+                    <option value="Colón (Nar.)">Colón (Nar.)</option>
+                    <option value="Colón (Put.)">Colón (Put.)</option>
+                    <option value="Coloso (Suc.)">Coloso (Suc.)</option>
+                    <option value="Cómbita (Boy.)">Cómbita (Boy.)</option>
+                    <option value="Concepción (Ant.)">Concepción (Ant.)</option>
+                    <option value="Concepción (San.)">Concepción (San.)</option>
+                    <option value="Concordia (Ant.)">Concordia (Ant.)</option>
+                    <option value="Concordia (Mag.)">Concordia (Mag.)</option>
+                    <option value="Condoto (Cho.)">Condoto (Cho.)</option>
+                    <option value="Confines (San.)">Confines (San.)</option>
+                    <option value="Consaca (Nar.)">Consaca (Nar.)</option>
+                    <option value="Contadero (Nar.)">Contadero (Nar.)</option>
+                    <option value="Contratación (San.)">Contratación (San.)</option>
+                    <option value="Convención (NSa.)">Convención (NSa.)</option>
+                    <option value="Copacabana (Ant.)">Copacabana (Ant.)</option>
+                    <option value="Coper (Boy.)">Coper (Boy.)</option>
+                    <option value="Córdoba (Bol.)">Córdoba (Bol.)</option>
+                    <option value="Córdoba (Nar.)">Córdoba (Nar.)</option>
+                    <option value="Córdoba (Qui.)">Córdoba (Qui.)</option>
+                    <option value="Corinto (Cau.)">Corinto (Cau.)</option>
+                    <option value="Coromoro (San.)">Coromoro (San.)</option>
+                    <option value="Corozal (Suc.)">Corozal (Suc.)</option>
+                    <option value="Corrales (Boy.)">Corrales (Boy.)</option>
+                    <option value="Cota (Cun.)">Cota (Cun.)</option>
+                    <option value="Cotorra (Cor.)">Cotorra (Cor.)</option>
+                    <option value="Covarachía (Boy.)">Covarachía (Boy.)</option>
+                    <option value="Coveñas (Suc.)">Coveñas (Suc.)</option>
+                    <option value="Coyaima (Tol.)">Coyaima (Tol.)</option>
+                    <option value="Cravo Norte (Ara.)">Cravo Norte (Ara.)</option>
+                    <option value="Cuaspud (Nar.)">Cuaspud (Nar.)</option>
+                    <option value="Cubará (Boy.)">Cubará (Boy.)</option>
+                    <option value="Cubarral (Met.)">Cubarral (Met.)</option>
+                    <option value="Cucaita (Boy.)">Cucaita (Boy.)</option>
+                    <option value="Cucunubá (Cun.)">Cucunubá (Cun.)</option>
+                    <option value="Cúcuta (NSa.)">Cúcuta (NSa.)</option>
+                    <option value="Cucutilla (NSa.)">Cucutilla (NSa.)</option>
+                    <option value="Cuítiva (Boy.)">Cuítiva (Boy.)</option>
+                    <option value="Cumaral (Met.)">Cumaral (Met.)</option>
+                    <option value="Cumaribo (Vid.)">Cumaribo (Vid.)</option>
+                    <option value="Cumbal (Nar.)">Cumbal (Nar.)</option>
+                    <option value="Cumbitara (Nar.)">Cumbitara (Nar.)</option>
+                    <option value="Cunday (Tol.)">Cunday (Tol.)</option>
+                    <option value="Curillo (Caq.)">Curillo (Caq.)</option>
+                    <option value="Curití (San.)">Curití (San.)</option>
+                    <option value="Curumaní (Ces.)">Curumaní (Ces.)</option>
+                    <option value="Dabeiba (Ant.)">Dabeiba (Ant.)</option>
+                    <option value="Dagua (VaC.)">Dagua (VaC.)</option>
+                    <option value="Dibula (LaG.)">Dibula (LaG.)</option>
+                    <option value="Distracción (LaG.)">Distracción (LaG.)</option>
+                    <option value="Dolores (Tol.)">Dolores (Tol.)</option>
+                    <option value="Don Matías (Ant.)">Don Matías (Ant.)</option>
+                    <option value="Dosquebradas (Ris.)">Dosquebradas (Ris.)</option>
+                    <option value="Duitama (Boy.)">Duitama</option>
+                    <option value="Durania (NSa.)">Durania (NSa.)</option>
+                    <option value="Ebéjico (Ant.)">Ebéjico (Ant.)</option>
+                    <option value="El Águila (VaC.)">El Águila (VaC.)</option>
+                    <option value="El Bagre (Ant.)">El Bagre (Ant.)</option>
+                    <option value="El Banco (Mag.)">El Banco (Mag.)</option>
+                    <option value="El Cairo (VaC.)">El Cairo (VaC.)</option>
+                    <option value="El Calvario (Met.)">El Calvario (Met.)</option>
+                    <option value="El Cantón del San Pablo (Cho.)">El Cantón del San Pablo (Cho.)</option>
+                    <option value="El Carmen (NSa.)">El Carmen (NSa.)</option>
+                    <option value="El Carmen de Atrato (Cho.)">El Carmen de Atrato (Cho.)</option>
+                    <option value="El Carmen de Bolívar (Bol.)">El Carmen de Bolívar (Bol.)</option>
+                    <option value="El Carmen de Chucurí (San.)">El Carmen de Chucurí (San.)</option>
+                    <option value="El Carmen de Viboral (Ant.)">El Carmen de Viboral (Ant.)</option>
+                    <option value="El Castillo (Met.)">El Castillo (Met.)</option>
+                    <option value="El Cerrito (VaC.)">El Cerrito (VaC.)</option>
+                    <option value="El Charco (Nar.)">El Charco (Nar.)</option>
+                    <option value="El Cocuy (Boy.)">El Cocuy (Boy.)</option>
+                    <option value="El Colegio (Cun.)">El Colegio (Cun.)</option>
+                    <option value="El Copey (Ces.)">El Copey (Ces.)</option>
+                    <option value="El Doncello (Caq.)">El Doncello (Caq.)</option>
+                    <option value="El Dorado (Met.)">El Dorado (Met.)</option>
+                    <option value="El Dovio (VaC.)">El Dovio (VaC.)</option>
+                    <option value="El Encanto (Ama.)">El Encanto (Ama.)</option>
+                    <option value="El Espino (Boy.)">El Espino (Boy.)</option>
+                    <option value="El Guacamayo (San.)">El Guacamayo (San.)</option>
+                    <option value="El Guamo (Bol.)">El Guamo (Bol.)</option>
+                    <option value="El Litoral del San Juan (Cho.)">El Litoral del San Juan (Cho.)</option>
+                    <option value="El Molino (LaG.)">El Molino (LaG.)</option>
+                    <option value="El Paso (Ces.)">El Paso (Ces.)</option>
+                    <option value="El Paujil (Caq.)">El Paujil (Caq.)</option>
+                    <option value="El Peñol (Nar.)">El Peñol (Nar.)</option>
+                    <option value="El Peñón (Cun.)">El Peñón (Cun.)</option>
+                    <option value="El Peñón (Bol.)">El Peñón (Bol.)</option>
+                    <option value="El Peñón (San.)">El Peñón (San.)</option>
+                    <option value="El Piñon (Mag.)">El Piñon (Mag.)</option>
+                    <option value="El Playón (San.)">El Playón (San.)</option>
+                    <option value="El Retén (Mag.)">El Retén (Mag.)</option>
+                    <option value="El Retorno (Guv.)">El Retorno (Guv.)</option>
+                    <option value="El Roble (Suc.)">El Roble (Suc.)</option>
+                    <option value="El Rosal (Cun.)">El Rosal (Cun.)</option>
+                    <option value="El Rosario (Nar.)">El Rosario (Nar.)</option>
+                    <option value="El Santuario (Ant.)">El Santuario (Ant.)</option>
+                    <option value="El Tablón de Gómez (Nar.)">El Tablón de Gómez (Nar.)</option>
+                    <option value="El Tambo (Nar.)">El Tambo (Nar.)</option>
+                    <option value="El Tambo (Cau.)">El Tambo (Cau.)</option>
+                    <option value="El Tarra (NSa.)">El Tarra (NSa.)</option>
+                    <option value="El Zulia (NSa.)">El Zulia (NSa.)</option>
+                    <option value="Elías (Hui.)">Elías (Hui.)</option>
+                    <option value="Encino (San.)">Encino (San.)</option>
+                    <option value="Enciso (San.)">Enciso (San.)</option>
+                    <option value="Entrerrios (Ant.)">Entrerrios (Ant.)</option>
+                    <option value="Envigado (Ant.)">Envigado (Ant.)</option>
+                    <option value="Espinal (Tol.)">Espinal (Tol.)</option>
+                    <option value="Facatativá (Cun.)">Facatativá (Cun.)</option>
+                    <option value="Falan (Tol.)">Falan (Tol.)</option>
+                    <option value="Filadelfia (Cal.)">Filadelfia (Cal.)</option>
+                    <option value="Filandia (Qui.)">Filandia (Qui.)</option>
+                    <option value="Firavitoba (Boy.)">Firavitoba (Boy.)</option>
+                    <option value="Flandes (Tol.)">Flandes (Tol.)</option>
+                    <option value="Florencia (Cau.)">Florencia (Cau.)</option>
+                    <option value="Florencia (Caq.)">Florencia (Caq.)</option>
+                    <option value="Floresta (Boy.)">Floresta (Boy.)</option>
+                    <option value="Florián (San.)">Florián (San.)</option>
+                    <option value="Florida (VaC.)">Florida (VaC.)</option>
+                    <option value="Floridablanca (San.)">Floridablanca (San.)</option>
+                    <option value="Fomeque (Cun.)">Fomeque (Cun.)</option>
+                    <option value="Fonseca (LaG.)">Fonseca (LaG.)</option>
+                    <option value="Fortul (Ara.)">Fortul (Ara.)</option>
+                    <option value="Fosca (Cun.)">Fosca (Cun.)</option>
+                    <option value="Francisco Pizarro (Nar.)">Francisco Pizarro (Nar.)</option>
+                    <option value="Fredonia (Ant.)">Fredonia (Ant.)</option>
+                    <option value="Fresno (Tol.)">Fresno (Tol.)</option>
+                    <option value="Frontino (Ant.)">Frontino (Ant.)</option>
+                    <option value="Fuente de Oro (Met.)">Fuente de Oro (Met.)</option>
+                    <option value="Fundación (Mag.)">Fundación (Mag.)</option>
+                    <option value="Funes (Nar.)">Funes (Nar.)</option>
+                    <option value="Funza (Cun.)">Funza (Cun.)</option>
+                    <option value="Fúquene (Cun.)">Fúquene (Cun.)</option>
+                    <option value="Fusagasugá (Cun.)">Fusagasugá (Cun.)</option>
+                    <option value="Gachala (Cun.)">Gachala (Cun.)</option>
+                    <option value="Gachancipá (Cun.)">Gachancipá (Cun.)</option>
+                    <option value="Gachantivá (Boy.)">Gachantivá (Boy.)</option>
+                    <option value="Gachetá (Cun.)">Gachetá (Cun.)</option>
+                    <option value="Galán (San.)">Galán (San.)</option>
+                    <option value="Galapa (Atl.)">Galapa (Atl.)</option>
+                    <option value="Galeras (Suc.)">Galeras (Suc.)</option>
+                    <option value="Gama (Cun.)">Gama (Cun.)</option>
+                    <option value="Gamarra (Ces.)">Gamarra (Ces.)</option>
+                    <option value="Gambita (San.)">Gambita (San.)</option>
+                    <option value="Gameza (Boy.)">Gameza (Boy.)</option>
+                    <option value="Garagoa (Boy.)">Garagoa (Boy.)</option>
+                    <option value="Garzón (Hui.)">Garzón (Hui.)</option>
+                    <option value="Génova (Qui.)">Génova (Qui.)</option>
+                    <option value="Gigante (Hui.)">Gigante (Hui.)</option>
+                    <option value="Ginebra (VaC.)">Ginebra (VaC.)</option>
+                    <option value="Giraldo (Ant.)">Giraldo (Ant.)</option>
+                    <option value="Girardot (Cun.)">Girardot (Cun.)</option>
+                    <option value="Girardota (Ant.)">Girardota (Ant.)</option>
+                    <option value="Girón (San.)">Girón (San.)</option>
+                    <option value="Gómez Plata (Ant.)">Gómez Plata (Ant.)</option>
+                    <option value="González (Ces.)">González (Ces.)</option>
+                    <option value="Gramalote (NSa.)">Gramalote (NSa.)</option>
+                    <option value="Granada (Ant.)">Granada (Ant.)</option>
+                    <option value="Granada (Met.)">Granada (Met.)</option>
+                    <option value="Granada (Cun.)">Granada (Cun.)</option>
+                    <option value="Guaca (San.)">Guaca (San.)</option>
+                    <option value="Guacamayas (Boy.)">Guacamayas (Boy.)</option>
+                    <option value="Guacarí (VaC.)">Guacarí (VaC.)</option>
+                    <option value="Guachené (Cau.)">Guachené (Cau.)</option>
+                    <option value="Guachetá (Cun.)">Guachetá (Cun.)</option>
+                    <option value="Guachucal (Nar.)">Guachucal (Nar.)</option>
+                    <option value="Guadalajara de Buga (VaC.)">Guadalajara de Buga (VaC.)</option>
+                    <option value="Guadalupe (Ant.)">Guadalupe (Ant.)</option>
+                    <option value="Guadalupe (Hui.)">Guadalupe (Hui.)</option>
+                    <option value="Guadalupe (San.)">Guadalupe (San.)</option>
+                    <option value="Guaduas (Cun.)">Guaduas (Cun.)</option>
+                    <option value="Guaitarilla (Nar.)">Guaitarilla (Nar.)</option>
+                    <option value="Gualmatán (Nar.)">Gualmatán (Nar.)</option>
+                    <option value="Guamal (Met.)">Guamal (Met.)</option>
+                    <option value="Guamal (Mag.)">Guamal (Mag.)</option>
+                    <option value="Guamo (Tol.)">Guamo (Tol.)</option>
+                    <option value="Guapi (Cau.)">Guapi (Cau.)</option>
+                    <option value="Guapotá (San.)">Guapotá (San.)</option>
+                    <option value="Guaranda (Suc.)">Guaranda (Suc.)</option>
+                    <option value="Guarne (Ant.)">Guarne (Ant.)</option>
+                    <option value="Guasca (Cun.)">Guasca (Cun.)</option>
+                    <option value="Guatapé (Ant.)">Guatapé (Ant.)</option>
+                    <option value="Guataquí (Cun.)">Guataquí (Cun.)</option>
+                    <option value="Guatavita (Cun.)">Guatavita (Cun.)</option>
+                    <option value="Guateque (Boy.)">Guateque (Boy.)</option>
+                    <option value="Guática (Ris.)">Guática (Ris.)</option>
+                    <option value="Guavatá (San.)">Guavatá (San.)</option>
+                    <option value="Guayabal de Siquima (Cun.)">Guayabal de Siquima (Cun.)</option>
+                    <option value="Guayabetal (Cun.)">Guayabetal (Cun.)</option>
+                    <option value="Guayatá (Boy.)">Guayatá (Boy.)</option>
+                    <option value="Güepsa (San.)">Güepsa (San.)</option>
+                    <option value="Güicán (Boy.)">Güicán (Boy.)</option>
+                    <option value="Gutiérrez (Cun.)">Gutiérrez (Cun.)</option>
+                    <option value="Hacarí (NSa.)">Hacarí (NSa.)</option>
+                    <option value="Hatillo de Loba (Bol.)">Hatillo de Loba (Bol.)</option>
+                    <option value="Hato (San.)">Hato (San.)</option>
+                    <option value="Hato Corozal (Cas.)">Hato Corozal (Cas.)</option>
+                    <option value="Hatonuevo (LaG.)">Hatonuevo (LaG.)</option>
+                    <option value="Heliconia (Ant.)">Heliconia (Ant.)</option>
+                    <option value="Herrán (NSa.)">Herrán (NSa.)</option>
+                    <option value="Herveo (Tol.)">Herveo (Tol.)</option>
+                    <option value="Hispania (Ant.)">Hispania (Ant.)</option>
+                    <option value="Hobo (Hui.)">Hobo (Hui.)</option>
+                    <option value="Honda (Tol.)">Honda (Tol.)</option>
+                    <option value="Ibagué (Tol.)">Ibagué (Tol.)</option>
+                    <option value="Icononzo (Tol.)">Icononzo (Tol.)</option>
+                    <option value="Iles (Nar.)">Iles (Nar.)</option>
+                    <option value="Imués (Nar.)">Imués (Nar.)</option>
+                    <option value="Inírida (Gua.)">Inírida (Gua.)</option>
+                    <option value="Inzá (Cau.)">Inzá (Cau.)</option>
+                    <option value="Ipiales (Nar.)">Ipiales (Nar.)</option>
+                    <option value="Iquira (Hui.)">Iquira (Hui.)</option>
+                    <option value="Isnos (Hui.)">Isnos (Hui.)</option>
+                    <option value="Istmina (Cho.)">Istmina (Cho.)</option>
+                    <option value="Itaguí (Ant.)">Itaguí (Ant.)</option>
+                    <option value="Ituango (Ant.)">Ituango (Ant.)</option>
+                    <option value="Iza (Boy.)">Iza (Boy.)</option>
+                    <option value="Jambaló (Cau.)">Jambaló (Cau.)</option>
+                    <option value="Jamundí (VaC.)">Jamundí (VaC.)</option>
+                    <option value="Jardín (Ant.)">Jardín (Ant.)</option>
+                    <option value="Jenesano (Boy.)">Jenesano (Boy.)</option>
+                    <option value="Jericó (Ant.)">Jericó (Ant.)</option>
+                    <option value="Jericó (Boy.)">Jericó (Boy.)</option>
+                    <option value="Jerusalén (Cun.)">Jerusalén (Cun.)</option>
+                    <option value="Jesús María (San.)">Jesús María (San.)</option>
+                    <option value="Jordán (San.)">Jordán (San.)</option>
+                    <option value="Juan de Acosta (Atl.)">Juan de Acosta (Atl.)</option>
+                    <option value="Junín (Cun.)">Junín (Cun.)</option>
+                    <option value="Juradó (Cho.)">Juradó (Cho.)</option>
+                    <option value="La Apartada (Cor.)">La Apartada (Cor.)</option>
+                    <option value="La Argentina (Hui.)">La Argentina (Hui.)</option>
+                    <option value="La Belleza (San.)">La Belleza (San.)</option>
+                    <option value="La Calera (Cun.)">La Calera (Cun.)</option>
+                    <option value="La Capilla (Boy.)">La Capilla (Boy.)</option>
+                    <option value="La Ceja (Ant.)">La Ceja (Ant.)</option>
+                    <option value="La Celia (Ris.)">La Celia (Ris.)</option>
+                    <option value="La Chorrera (Ama.)">La Chorrera (Ama.)</option>
+                    <option value="La Cruz (Nar.)">La Cruz (Nar.)</option>
+                    <option value="La Cumbre (VaC.)">La Cumbre (VaC.)</option>
+                    <option value="La Dorada (Cal.)">La Dorada (Cal.)</option>
+                    <option value="La Esperanza (NSa.)">La Esperanza (NSa.)</option>
+                    <option value="La Estrella (Ant.)">La Estrella (Ant.)</option>
+                    <option value="La Florida (Nar.)">La Florida (Nar.)</option>
+                    <option value="La Gloria (Ces.)">La Gloria (Ces.)</option>
+                    <option value="La Guadalupe (Gua.)">La Guadalupe (Gua.)</option>
+                    <option value="La Jagua de Ibirico (Ces.)">La Jagua de Ibirico (Ces.)</option>
+                    <option value="La Jagua del Pilar (LaG.)">La Jagua del Pilar (LaG.)</option>
+                    <option value="La Llanada (Nar.)">La Llanada (Nar.)</option>
+                    <option value="La Macarena (Met.)">La Macarena (Met.)</option>
+                    <option value="La Merced (Cal.)">La Merced (Cal.)</option>
+                    <option value="La Mesa (Cun.)">La Mesa (Cun.)</option>
+                    <option value="La Montañita (Caq.)">La Montañita</option>
+                    <option value="La Palma (Cun.)">La Palma (Cun.)</option>
+                    <option value="La Paz (Ces.)">La Paz (Ces.)</option>
+                    <option value="La Paz (San.)">La Paz (San.)</option>
+                    <option value="La Pedrera (Ama.)">La Pedrera (Ama.)</option>
+                    <option value="La Peña (Cun.)">La Peña (Cun.)</option>
+                    <option value="La Pintada (Ant.)">La Pintada (Ant.)</option>
+                    <option value="La Plata (Hui.)">La Plata (Hui.)</option>
+                    <option value="La Playa (NSa.)">La Playa (NSa.)</option>
+                    <option value="La Primavera (Vid.)">La Primavera (Vid.)</option>
+                    <option value="La Salina (Cas.)">La Salina (Cas.)</option>
+                    <option value="La Sierra (Cau.)">La Sierra (Cau.)</option>
+                    <option value="La Tebaida (Qui.)">La Tebaida (Qui.)</option>
+                    <option value="La Tola (Nar.)">La Tola (Nar.)</option>
+                    <option value="La Unión (Ant.)">La Unión (Ant.)</option>
+                    <option value="La Unión (Nar.)">La Unión (Nar.)</option>
+                    <option value="La Unión (VaC.)">La Unión (VaC.)</option>
+                    <option value="La Unión (Suc.)">La Unión (Suc.)</option>
+                    <option value="La Uvita (Boy.)">La Uvita (Boy.)</option>
+                    <option value="La Vega (Cun.)">La Vega (Cun.)</option>
+                    <option value="La Vega (Cau.)">La Vega (Cau.)</option>
+                    <option value="La Victoria (VaC.)">La Victoria (VaC.)</option>
+                    <option value="La Victoria (Boy.)">La Victoria (Boy.)</option>
+                    <option value="La victoria (Ama.)">La victoria (Ama.)</option>
+                    <option value="La Virginia (Ris.)">La Virginia (Ris.)</option>
+                    <option value="Labateca (NSa.)">Labateca (NSa.)</option>
+                    <option value="Labranzagrande (Boy.)">Labranzagrande (Boy.)</option>
+                    <option value="Landázuri (San.)">Landázuri (San.)</option>
+                    <option value="Lebríja (San.)">Lebríja (San.)</option>
+                    <option value="Leguízamo (Put.)">Leguízamo (Put.)</option>
+                    <option value="Leiva (Nar.)">Leiva (Nar.)</option>
+                    <option value="Lejanías (Met.)">Lejanías (Met.)</option>
+                    <option value="Lenguazaque (Cun.)">Lenguazaque (Cun.)</option>
+                    <option value="Lérida (Tol.)">Lérida (Tol.)</option>
+                    <option value="Leticia (Ama.)">Leticia (Ama.)</option>
+                    <option value="Líbano (Tol.)">Líbano (Tol.)</option>
+                    <option value="Liborina (Ant.)">Liborina (Ant.)</option>
+                    <option value="Linares (Nar.)">Linares (Nar.)</option>
+                    <option value="Lloró (Cho.)">Lloró (Cho.)</option>
+                    <option value="López (Cau.)">López (Cau.)</option>
+                    <option value="Lorica (Cor.)">Lorica (Cor.)</option>
+                    <option value="Los Andes (Nar.)">Los Andes (Nar.)</option>
+                    <option value="Los Córdobas (Cor.)">Los Córdobas (Cor.)</option>
+                    <option value="Los Palmitos (Suc.)">Los Palmitos (Suc.)</option>
+                    <option value="Los Patios (NSa.)">Los Patios (NSa.)</option>
+                    <option value="Los Santos (San.)">Los Santos (San.)</option>
+                    <option value="Lourdes (NSa.)">Lourdes (NSa.)</option>
+                    <option value="Luruaco (Atl.)">Luruaco (Atl.)</option>
+                    <option value="Macanal (Boy.)">Macanal (Boy.)</option>
+                    <option value="Macaravita (San.)">Macaravita (San.)</option>
+                    <option value="Maceo (Ant.)">Maceo (Ant.)</option>
+                    <option value="Macheta (Cun.)">Macheta (Cun.)</option>
+                    <option value="Madrid (Cun.)">Madrid (Cun.)</option>
+                    <option value="Magangué (Bol.)">Magangué (Bol.)</option>
+                    <option value="Magüi (Nar.)">Magüi (Nar.)</option>
+                    <option value="Mahates (Bol.)">Mahates (Bol.)</option>
+                    <option value="Maicao (LaG.)">Maicao (LaG.)</option>
+                    <option value="Majagual (Suc.)">Majagual (Suc.)</option>
+                    <option value="Málaga (San.)">Málaga (San.)</option>
+                    <option value="Malambo (Atl.)">Malambo (Atl.)</option>
+                    <option value="Mallama (Nar.)">Mallama (Nar.)</option>
+                    <option value="Manatí (Atl.)">Manatí (Atl.)</option>
+                    <option value="Manaure (Ces.)">Manaure (Ces.)</option>
+                    <option value="Manaure (LaG.)">Manaure (LaG.)</option>
+                    <option value="Maní (Cas.)">Maní (Cas.)</option>
+                    <option value="Manizales (Cal.)">Manizales (Cal.)</option>
+                    <option value="Manta (Cun.)">Manta (Cun.)</option>
+                    <option value="Manzanares (Cal.)">Manzanares (Cal.)</option>
+                    <option value="Mapiripán (Met.)">Mapiripán (Met.)</option>
+                    <option value="Mapiripana (Gua.)">Mapiripana (Gua.)</option>
+                    <option value="Margarita (Bol.)">Margarita (Bol.)</option>
+                    <option value="María La Baja (Bol.)">María La Baja (Bol.)</option>
+                    <option value="Marinilla (Ant.)">Marinilla (Ant.)</option>
+                    <option value="Maripí (Boy.)">Maripí (Boy.)</option>
+                    <option value="Mariquita (Tol.)">Mariquita (Tol.)</option>
+                    <option value="Marmato (Cal.)">Marmato (Cal.)</option>
+                    <option value="Marquetalia (Cal.)">Marquetalia (Cal.)</option>
+                    <option value="Marsella (Ris.)">Marsella (Ris.)</option>
+                    <option value="Marulanda (Cal.)">Marulanda (Cal.)</option>
+                    <option value="Matanza (San.)">Matanza (San.)</option>
+                    <option value="Medellín (Ant.)">Medellín (Ant.)</option>
+                    <option value="Medina (Cun.)">Medina (Cun.)</option>
+                    <option value="Medio Atrato (Cho.)">Medio Atrato (Cho.)</option>
+                    <option value="Medio Baudó (Cho.)">Medio Baudó (Cho.)</option>
+                    <option value="Medio San Juan (Cho.)">Medio San Juan (Cho.)</option>
+                    <option value="Melgar (Tol.)">Melgar (Tol.)</option>
+                    <option value="Mercaderes (Cau.)">Mercaderes (Cau.)</option>
+                    <option value="Mesetas (Met.)">Mesetas (Met.)</option>
+                    <option value="Milán (Caq.)">Milán (Caq.)</option>
+                    <option value="Miraflores (Boy.)">Miraflores (Boy.)</option>
+                    <option value="Miraflores (Guv.)">Miraflores (Guv.)</option>
+                    <option value="Miranda (Cau.)">Miranda (Cau.)</option>
+                    <option value="Miriti Paraná (Ama.)">Miriti Paraná (Ama.)</option>
+                    <option value="Mistrató (Ris.)">Mistrató (Ris.)</option>
+                    <option value="Mitú (Vau.)">Mitú (Vau.)</option>
+                    <option value="Mocoa (Put.)">Mocoa (Put.)</option>
+                    <option value="Mogotes (San.)">Mogotes (San.)</option>
+                    <option value="Molagavita (San.)">Molagavita (San.)</option>
+                    <option value="Momil (Cor.)">Momil (Cor.)</option>
+                    <option value="Mompós (Bol.)">Mompós (Bol.)</option>
+                    <option value="Mongua (Boy.)">Mongua (Boy.)</option>
+                    <option value="Monguí (Boy.)">Monguí (Boy.)</option>
+                    <option value="Moniquirá (Boy.)">Moniquirá (Boy.)</option>
+                    <option value="Moñitos (Cor.)">Moñitos (Cor.)</option>
+                    <option value="Montebello (Ant.)">Montebello (Ant.)</option>
+                    <option value="Montecristo (Bol.)">Montecristo (Bol.)</option>
+                    <option value="Montelíbano (Cor.)">Montelíbano (Cor.)</option>
+                    <option value="Montenegro (Qui.)">Montenegro (Qui.)</option>
+                    <option value="Montería (Cor.)">Montería (Cor.)</option>
+                    <option value="Monterrey (Cas.)">Monterrey (Cas.)</option>
+                    <option value="Morales (Bol.)">Morales (Bol.)</option>
+                    <option value="Morales (Cau.)">Morales (Cau.)</option>
+                    <option value="Morelia (Caq.)">Morelia (Caq.)</option>
+                    <option value="Morichal (Gua.)">Morichal (Gua.)</option>
+                    <option value="Morroa (Suc.)">Morroa (Suc.)</option>
+                    <option value="Mosquera (Cun.)">Mosquera (Cun.)</option>
+                    <option value="Mosquera (Nar.)">Mosquera (Nar.)</option>
+                    <option value="Motavita (Boy.)">Motavita (Boy.)</option>
+                    <option value="Murillo (Tol.)">Murillo (Tol.)</option>
+                    <option value="Murindó (Ant.)">Murindó (Ant.)</option>
+                    <option value="Mutatá (Ant.)">Mutatá (Ant.)</option>
+                    <option value="Mutiscua (NSa.)">Mutiscua (NSa.)</option>
+                    <option value="Muzo (Boy.)">Muzo (Boy.)</option>
+                    <option value="Nariño (Ant.)">Nariño (Ant.)</option>
+                    <option value="Nariño (Cun.)">Nariño (Cun.)</option>
+                    <option value="Nariño (Nar.)">Nariño (Nar.)</option>
+                    <option value="Nátaga (Hui.)">Nátaga (Hui.)</option>
+                    <option value="Natagaima (Tol.)">Natagaima (Tol.)</option>
+                    <option value="Nechí (Ant.)">Nechí (Ant.)</option>
+                    <option value="Necoclí (Ant.)">Necoclí (Ant.)</option>
+                    <option value="Neira (Cal.)">Neira (Cal.)</option>
+                    <option value="Neiva (Hui.)">Neiva (Hui.)</option>
+                    <option value="Nemocón (Cun.)">Nemocón (Cun.)</option>
+                    <option value="Nilo (Cun.)">Nilo (Cun.)</option>
+                    <option value="Nimaima (Cun.)">Nimaima (Cun.)</option>
+                    <option value="Nobsa (Boy.)">Nobsa (Boy.)</option>
+                    <option value="Nocaima (Cun.)">Nocaima (Cun.)</option>
+                    <option value="Norcasia (Cal.)">Norcasia (Cal.)</option>
+                    <option value="Norosí (Bol.)">Norosí (Bol.)</option>
+                    <option value="Nóvita (Cho.)">Nóvita (Cho.)</option>
+                    <option value="Nueva Granada (Mag.)">Nueva Granada (Mag.)</option>
+                    <option value="Nuevo Colón (Boy.)">Nuevo Colón (Boy.)</option>
+                    <option value="Nunchía (Cas.)">Nunchía (Cas.)</option>
+                    <option value="Nuquí (Cho.)">Nuquí (Cho.)</option>
+                    <option value="Obando (VaC.)">Obando (VaC.)</option>
+                    <option value="Ocamonte (San.)">Ocamonte (San.)</option>
+                    <option value="Ocaña (NSa.)">Ocaña (NSa.)</option>
+                    <option value="Oiba (San.)">Oiba (San.)</option>
+                    <option value="Oicatá (Boy.)">Oicatá (Boy.)</option>
+                    <option value="Olaya (Ant.)">Olaya (Ant.)</option>
+                    <option value="Olaya Herrera (Nar.)">Olaya Herrera (Nar.)</option>
+                    <option value="Onzaga (San.)">Onzaga (San.)</option>
+                    <option value="Oporapa (Hui.)">Oporapa (Hui.)</option>
+                    <option value="Orito (Put.)">Orito (Put.)</option>
+                    <option value="Orocué (Cas.)">Orocué (Cas.)</option>
+                    <option value="Ortega (Tol.)">Ortega (Tol.)</option>
+                    <option value="Ospina (Nar.)">Ospina (Nar.)</option>
+                    <option value="Otanche (Boy.)">Otanche (Boy.)</option>
+                    <option value="Ovejas (Suc.)">Ovejas (Suc.)</option>
+                    <option value="Pachavita (Boy.)">Pachavita (Boy.)</option>
+                    <option value="Pacho (Cun.)">Pacho (Cun.)</option>
+                    <option value="Pacoa (Vau.)">Pacoa (Vau.)</option>
+                    <option value="Pácora (Cal.)">Pácora (Cal.)</option>
+                    <option value="Padilla (Cau.)">Padilla (Cau.)</option>
+                    <option value="Páez (Boy.)">Páez (Boy.)</option>
+                    <option value="Páez (Cau.)">Páez (Cau.)</option>
+                    <option value="Paicol (Hui.)">Paicol (Hui.)</option>
+                    <option value="Pailitas (Ces.)">Pailitas (Ces.)</option>
+                    <option value="Paime (Cun.)">Paime (Cun.)</option>
+                    <option value="Paipa (Boy.)">Paipa (Boy.)</option>
+                    <option value="Pajarito (Boy.)">Pajarito (Boy.)</option>
+                    <option value="Palermo (Hui.)">Palermo (Hui.)</option>
+                    <option value="Palestina (Hui.)">Palestina (Hui.)</option>
+                    <option value="Palestina (Cal.)">Palestina (Cal.)</option>
+                    <option value="Palmar (San.)">Palmar (San.)</option>
+                    <option value="Palmar de Varela (Atl.)">Palmar de Varela (Atl.)</option>
+                    <option value="Palmas del Socorro (San.)">Palmas del Socorro (San.)</option>
+                    <option value="Palmira (VaC.)">Palmira (VaC.)</option>
+                    <option value="Palmito (Suc.)">Palmito (Suc.)</option>
+                    <option value="Palocabildo (Tol.)">Palocabildo (Tol.)</option>
+                    <option value="Pamplona (NSa.)">Pamplona (NSa.)</option>
+                    <option value="Pamplonita (NSa.)">Pamplonita (NSa.)</option>
+                    <option value="Pana Pana (Gua.)">Pana Pana (Gua.)</option>
+                    <option value="Pandi (Cun.)">Pandi (Cun.)</option>
+                    <option value="Panqueba (Boy.)">Panqueba (Boy.)</option>
+                    <option value="Papunaua (Vau.)">Papunaua (Vau.)</option>
+                    <option value="Páramo (San.)">Páramo (San.)</option>
+                    <option value="Paratebueno (Cun.)">Paratebueno (Cun.)</option>
+                    <option value="Pasca (Cun.)">Pasca (Cun.)</option>
+                    <option value="Pasto (Nar.)">Pasto (Nar.)</option>
+                    <option value="Patía (Cau.)">Patía (Cau.)</option>
+                    <option value="Pauna (Boy.)">Pauna (Boy.)</option>
+                    <option value="Paya (Boy.)">Paya (Boy.)</option>
+                    <option value="Paz de Ariporo (Cas.)">Paz de Ariporo (Cas.)</option>
+                    <option value="Paz de Río (Boy.)">Paz de Río (Boy.)</option>
+                    <option value="Pedraza (Mag.)">Pedraza (Mag.)</option>
+                    <option value="Pelaya (Ces.)">Pelaya (Ces.)</option>
+                    <option value="Peñol (Ant.)">Peñol (Ant.)</option>
+                    <option value="Pensilvania (Cal.)">Pensilvania (Cal.)</option>
+                    <option value="Peque (Ant.)">Peque (Ant.)</option>
+                    <option value="Pereira (Ris.)">Pereira (Ris.)</option>
+                    <option value="Pesca (Boy.)">Pesca (Boy.)</option>
+                    <option value="Piamonte (Cau.)">Piamonte (Cau.)</option>
+                    <option value="Piedecuesta (San.)">Piedecuesta (San.)</option>
+                    <option value="Piedras (Tol.)">Piedras (Tol.)</option>
+                    <option value="Piendamó (Cau.)">Piendamó (Cau.)</option>
+                    <option value="Pijao (Qui.)">Pijao (Qui.)</option>
+                    <option value="Pijiño del Carmen (Mag.)">Pijiño del Carmen (Mag.)</option>
+                    <option value="Pinchote (San.)">Pinchote (San.)</option>
+                    <option value="Pinillos (Bol.)">Pinillos (Bol.)</option>
+                    <option value="Piojó (Atl.)">Piojó (Atl.)</option>
+                    <option value="Pisba (Boy.)">Pisba (Boy.)</option>
+                    <option value="Pital (Hui.)">Pital (Hui.)</option>
+                    <option value="Pitalito (Hui.)">Pitalito (Hui.)</option>
+                    <option value="Pivijay (Mag.)">Pivijay (Mag.)</option>
+                    <option value="Planadas (Tol.)">Planadas (Tol.)</option>
+                    <option value="Planeta Rica (Cor.)">Planeta Rica (Cor.)</option>
+                    <option value="Plato (Mag.)">Plato (Mag.)</option>
+                    <option value="Policarpa (Nar.)">Policarpa (Nar.)</option>
+                    <option value="Polonuevo (Atl.)">Polonuevo (Atl.)</option>
+                    <option value="Ponedera (Atl.)">Ponedera (Atl.)</option>
+                    <option value="Popayán (Cau.)">Popayán (Cau.)</option>
+                    <option value="Pore (Cas.)">Pore (Cas.)</option>
+                    <option value="Potosí (Nar.)">Potosí (Nar.)</option>
+                    <option value="Pradera (VaC.)">Pradera (VaC.)</option>
+                    <option value="Prado (Tol.)">Prado (Tol.)</option>
+                    <option value="Providencia (Nar.)">Providencia (Nar.)</option>
+                    <option value="Providencia (SaP.)">Providencia (SaP.)</option>
+                    <option value="Pueblo Bello (Ces.)">Pueblo Bello (Ces.)</option>
+                    <option value="Pueblo Nuevo (Cor.)">Pueblo Nuevo (Cor.)</option>
+                    <option value="Pueblo Rico (Ris.)">Pueblo Rico (Ris.)</option>
+                    <option value="Pueblorrico (Ant.)">Pueblorrico (Ant.)</option>
+                    <option value="Puebloviejo (Mag.)">Puebloviejo (Mag.)</option>
+                    <option value="Puente Nacional (San.)">Puente Nacional (San.)</option>
+                    <option value="Puerres (Nar.)">Puerres (Nar.)</option>
+                    <option value="Puerto Alegría (Ama.)">Puerto Alegría (Ama.)</option>
+                    <option value="Puerto Arica (Ama.)">Puerto Arica (Ama.)</option>
+                    <option value="Puerto Asís (Put.)">Puerto Asís (Put.)</option>
+                    <option value="Puerto Berrío (Ant.)">Puerto Berrío (Ant.)</option>
+                    <option value="Puerto Boyacá (Boy.)">Puerto Boyacá (Boy.)</option>
+                    <option value="Puerto Caicedo (Put.)">Puerto Caicedo (Put.)</option>
+                    <option value="Puerto Carreño (Vid.)">Puerto Carreño (Vid.)</option>
+                    <option value="Puerto Colombia (Atl.)">Puerto Colombia (Atl.)</option>
+                    <option value="Puerto Colombia (Gua.)">Puerto Colombia (Gua.)</option>
+                    <option value="Puerto Concordia (Met.)">Puerto Concordia (Met.)</option>
+                    <option value="Puerto Escondido (Cor.)">Puerto Escondido (Cor.)</option>
+                    <option value="Puerto Gaitán (Met.)">Puerto Gaitán (Met.)</option>
+                    <option value="Puerto Guzmán (Put.)">Puerto Guzmán (Put.)</option>
+                    <option value="Puerto Libertador (Cor.)">Puerto Libertador (Cor.)</option>
+                    <option value="Puerto Lleras (Met.)">Puerto Lleras (Met.)</option>
+                    <option value="Puerto López (Met.)">Puerto López (Met.)</option>
+                    <option value="Puerto Nare (Ant.)">Puerto Nare (Ant.)</option>
+                    <option value="Puerto Nariño (Ama.)">Puerto Nariño (Ama.)</option>
+                    <option value="Puerto Parra (San.)">Puerto Parra (San.)</option>
+                    <option value="Puerto Rico (Met.)">Puerto Rico (Met.)</option>
+                    <option value="Puerto Rico (Caq.)">Puerto Rico (Caq.)</option>
+                    <option value="Puerto Rondón (Ara.)">Puerto Rondón (Ara.)</option>
+                    <option value="Puerto Salgar (Cun.)">Puerto Salgar (Cun.)</option>
+                    <option value="Puerto Santander (NSa.)">Puerto Santander (NSa.)</option>
+                    <option value="Puerto Santander (Ama.)">Puerto Santander (Ama.)</option>
+                    <option value="Puerto Tejada (Cau.)">Puerto Tejada (Cau.)</option>
+                    <option value="Puerto Triunfo (Ant.)">Puerto Triunfo (Ant.)</option>
+                    <option value="Puerto Wilches (San.)">Puerto Wilches (San.)</option>
+                    <option value="Pulí (Cun.)">Pulí (Cun.)</option>
+                    <option value="Pupiales (Nar.)">Pupiales (Nar.)</option>
+                    <option value="Puracé (Cau.)">Puracé (Cau.)</option>
+                    <option value="Purificación (Tol.)">Purificación (Tol.)</option>
+                    <option value="Purísima (Cor.)">Purísima (Cor.)</option>
+                    <option value="Quebradanegra (Cun.)">Quebradanegra (Cun.)</option>
+                    <option value="Quetame (Cun.)">Quetame (Cun.)</option>
+                    <option value="Quibdó (Cho.)">Quibdó (Cho.)</option>
+                    <option value="Quimbaya (Qui.)">Quimbaya (Qui.)</option>
+                    <option value="Quinchía (Ris.)">Quinchía (Ris.)</option>
+                    <option value="Quípama (Boy.)">Quípama (Boy.)</option>
+                    <option value="Quipile (Cun.)">Quipile (Cun.)</option>
+                    <option value="Ragonvalia (NSa.)">Ragonvalia (NSa.)</option>
+                    <option value="Ramiriquí (Boy.)">Ramiriquí (Boy.)</option>
+                    <option value="Ráquira (Boy.)">Ráquira (Boy.)</option>
+                    <option value="Recetor (Cas.)">Recetor (Cas.)</option>
+                    <option value="Regidor (Bol.)">Regidor (Bol.)</option>
+                    <option value="Remedios (Ant.)">Remedios (Ant.)</option>
+                    <option value="Remolino (Mag.)">Remolino (Mag.)</option>
+                    <option value="Repelón (Atl.)">Repelón (Atl.)</option>
+                    <option value="Restrepo (Met.)">Restrepo (Met.)</option>
+                    <option value="Restrepo (VaC.)">Restrepo (VaC.)</option>
+                    <option value="Retiro (Ant.)">Retiro (Ant.)</option>
+                    <option value="Ricaurte (Cun.)">Ricaurte (Cun.)</option>
+                    <option value="Ricaurte (Nar.)">Ricaurte (Nar.)</option>
+                    <option value="Río de Oro (Ces.)">Río de Oro (Ces.)</option>
+                    <option value="Río Iro (Cho.)">Río Iro (Cho.)</option>
+                    <option value="Río Quito (Cho.)">Río Quito (Cho.)</option>
+                    <option value="Río Viejo (Bol.)">Río Viejo (Bol.)</option>
+                    <option value="Río Blanco (Tol.)">Río Blanco (Tol.)</option>
+                    <option value="Riofrío (VaC.)">Riofrío (VaC.)</option>
+                    <option value="Riohacha (LaG.)">Riohacha (LaG.)</option>
+                    <option value="Rionegro (Ant.)">Rionegro (Ant.)</option>
+                    <option value="Rionegro (San.)">Rionegro (San.)</option>
+                    <option value="Riosucio (Cho.)">Riosucio (Cho.)</option>
+                    <option value="Riosucio (Cal.)">Riosucio (Cal.)</option>
+                    <option value="Risaralda (Cal.)">Risaralda (Cal.)</option>
+                    <option value="Rivera (Hui.)">Rivera (Hui.)</option>
+                    <option value="Roberto Payán (Nar.)">Roberto Payán (Nar.)</option>
+                    <option value="Roldanillo (VaC.)">Roldanillo (VaC.)</option>
+                    <option value="Roncesvalles (Tol.)">Roncesvalles (Tol.)</option>
+                    <option value="Rondón (Boy.)">Rondón (Boy.)</option>
+                    <option value="Rosas (Cau.)">Rosas (Cau.)</option>
+                    <option value="Rovira (Tol.)">Rovira (Tol.)</option>
+                    <option value="Sabana de Torres (San.)">Sabana de Torres (San.)</option>
+                    <option value="Sabanagrande (Atl.)">Sabanagrande (Atl.)</option>
+                    <option value="Sabanalarga (Ant.)">Sabanalarga (Ant.)</option>
+                    <option value="Sabanalarga (Cas.)">Sabanalarga (Cas.)</option>
+                    <option value="Sabanalarga (Atl.)">Sabanalarga (Atl.)</option>
+                    <option value="Sabanas de San Angel (Mag.)">Sabanas de San Angel (Mag.)</option>
+                    <option value="Sabaneta (Ant.)">Sabaneta (Ant.)</option>
+                    <option value="Saboyá (Boy.)">Saboyá (Boy.)</option>
+                    <option value="Sácama (Cas.)">Sácama (Cas.)</option>
+                    <option value="Sáchica (Boy.)">Sáchica (Boy.)</option>
+                    <option value="Sahagún (Cor.)">Sahagún (Cor.)</option>
+                    <option value="Saladoblanco (Hui.)">Saladoblanco (Hui.)</option>
+                    <option value="Salamina (Cal.)">Salamina (Cal.)</option>
+                    <option value="Salamina (Mag.)">Salamina (Mag.)</option>
+                    <option value="Salazar (NSa.)">Salazar (NSa.)</option>
+                    <option value="Saldaña (Tol.)">Saldaña (Tol.)</option>
+                    <option value="Salento (Qui.)">Salento (Qui.)</option>
+                    <option value="Salgar (Ant.)">Salgar (Ant.)</option>
+                    <option value="Samacá (Boy.)">Samacá (Boy.)</option>
+                    <option value="Samaná (Cal.)">Samaná (Cal.)</option>
+                    <option value="Samaniego (Nar.)">Samaniego (Nar.)</option>
+                    <option value="Sampués (Suc.)">Sampués (Suc.)</option>
+                    <option value="San Agustín (Hui.)">San Agustín (Hui.)</option>
+                    <option value="San Alberto (Ces.)">San Alberto (Ces.)</option>
+                    <option value="San Andrés (San.)">San Andrés (San.)</option>
+                    <option value="San Andrés (Cor.)">San Andrés (Cor.)</option>
+                    <option value="San Andrés (SaP.)">San Andrés (SaP.)</option>
+                    <option value="San Andrés de Cuerquía (Ant.)">San Andrés (Ant.)</option>
+                    <option value="San Andrés de Tumaco (Nar.)">San Andrés de Tumaco (Nar.)</option>
+                    <option value="San Andrés Sotavento">San Andrés Sotavento</option>
+                    <option value="San Antero (Cor.)">San Antero (Cor.)</option>
+                    <option value="San Antonio (Tol.)">San Antonio (Tol.)</option>
+                    <option value="San Antonio del Tequendama (Cun.)">San Antonio del Tequendama (Cun.)</option>
+                    <option value="San Benito (San.)">San Benito (San.)</option>
+                    <option value="San Benito Abad (Suc.)">San Benito Abad (Suc.)</option>
+                    <option value="San Bernardo (Cun.)">San Bernardo (Cun.)</option>
+                    <option value="San Bernardo (Nar.)">San Bernardo (Nar.)</option>
+                    <option value="San Bernardo del Viento (Cor.)">San Bernardo del Viento (Cor.)</option>
+                    <option value="San Calixto (NSa.)">San Calixto (NSa.)</option>
+                    <option value="San Carlos (Ant.)">San Carlos (Ant.)</option>
+                    <option value="San Carlos (Cor.)">San Carlos (Cor.)</option>
+                    <option value="San Carlos de Guaroa (Met.)">San Carlos de Guaroa (Met.)</option>
+                    <option value="San Cayetano (NSa.)">San Cayetano (NSa.)</option>
+                    <option value="San Cayetano (Cun.)">San Cayetano (Cun.)</option>
+                    <option value="San Cristóbal (Bol.)">San Cristóbal (Bol.)</option>
+                    <option value="San Diego (Ces.)">San Diego (Ces.)</option>
+                    <option value="San Eduardo (Boy.)">San Eduardo (Boy.)</option>
+                    <option value="San Estanislao (Bol.)">San Estanislao (Bol.)</option>
+                    <option value="San Felipe (Gua.)">San Felipe (Gua.)</option>
+                    <option value="San Fernando (Bol.)">San Fernando (Bol.)</option>
+                    <option value="San Francisco (Ant.)">San Francisco (Ant.)</option>
+                    <option value="San Francisco (Cun.)">San Francisco (Cun.)</option>
+                    <option value="San Francisco (Put.)">San Francisco (Put.)</option>
+                    <option value="San Gil (San.)">San Gil (San.)</option>
+                    <option value="San Jacinto (Bol.)">San Jacinto (Bol.)</option>
+                    <option value="San Jacinto del Cauca (Bol.)">San Jacinto del Cauca (Bol.)</option>
+                    <option value="San Jerónimo (Ant.)">San Jerónimo (Ant.)</option>
+                    <option value="San Joaquín (San.)">San Joaquín (San.)</option>
+                    <option value="San José (Cal.)">San José (Cal.)</option>
+                    <option value="San José de la Montaña (Ant.)">San José de la Montaña (Ant.)</option>
+                    <option value="San José de Miranda (San.)">San José de Miranda (San.)</option>
+                    <option value="San José de Pare (Boy.)">San José de Pare (Boy.)</option>
+                    <option value="San José de Uré (Cor.)">San José de Uré (Cor.)</option>
+                    <option value="San José del Fragua (Caq.)">San José del Fragua (Caq.)</option>
+                    <option value="San José del Guaviare (Guv.)">San José del Guaviare (Guv.)</option>
+                    <option value="San José del Palmar (Cho.)">San José del Palmar (Cho.)</option>
+                    <option value="San Juan de Arama (Met.)">San Juan de Arama (Met.)</option>
+                    <option value="San Juan de Betulia (Suc.)">San Juan de Betulia (Suc.)</option>
+                    <option value="San Juan de Río Seco (Cun.)">San Juan de Río Seco (Cun.)</option>
+                    <option value="San Juan de Urabá (Ant.)">San Juan de Urabá (Ant.)</option>
+                    <option value="San Juan del Cesar (LaG.)">San Juan del Cesar (LaG.)</option>
+                    <option value="San Juan Nepomuceno (Bol.)">San Juan Nepomuceno (Bol.)</option>
+                    <option value="San Juanito (Met.)">San Juanito (Met.)</option>
+                    <option value="San Lorenzo (Nar.)">San Lorenzo (Nar.)</option>
+                    <option value="San Luis (Ant.)">San Luis (Ant.)</option>
+                    <option value="San Luis (Tol.)">San Luis (Tol.)</option>
+                    <option value="San Luis de Gaceno (Cas.)">San Luis de Gaceno (Cas.)</option>
+                    <option value="San Luis de Gaceno (Boy.)">San Luis de Gaceno (Boy.)</option>
+                    <option value="San Luis de Sincé (Suc.)">San Luis de Sincé (Suc.)</option>
+                    <option value="San Marcos (Suc.)">San Marcos (Suc.)</option>
+                    <option value="San Martín (Met.)">San Martín (Met.)</option>
+                    <option value="San Martín (Ces.)">San Martín (Ces.)</option>
+                    <option value="San Martín de Loba (Bol.)">San Martín de Loba (Bol.)</option>
+                    <option value="San Mateo (Boy.)">San Mateo (Boy.)</option>
+                    <option value="San Miguel (San.)">San Miguel (San.)</option>
+                    <option value="San Miguel (Put.)">San Miguel (Put.)</option>
+                    <option value="San Miguel de Sema (Boy.)">San Miguel de Sema (Boy.)</option>
+                    <option value="San Onofre (Suc.)">San Onofre (Suc.)</option>
+                    <option value="San Pablo (Nar.)">San Pablo (Nar.)</option>
+                    <option value="San Pablo de Borbur (Bol.)">San Pablo de Borbur (Bol.)</option>
+                    <option value="San Pablo de Borbur (Boy.)">San Pablo de Borbur (Boy.)</option>
+                    <option value="San Pedro (Ant.)">San Pedro (Ant.)</option>
+                    <option value="San Pedro (VaC.)">San Pedro (VaC.)</option>
+                    <option value="San Pedro (Suc.)">San Pedro (Suc.)</option>
+                    <option value="San Pedro de Cartago (Nar.)">San Pedro de Cartago (Nar.)</option>
+                    <option value="San Pedro de Uraba (Ant.)">San Pedro de Uraba (Ant.)</option>
+                    <option value="San Pelayo (Cor.)">San Pelayo (Cor.)</option>
+                    <option value="San Rafael (Ant.)">San Rafael (Ant.)</option>
+                    <option value="San Roque (Ant.)">San Roque (Ant.)</option>
+                    <option value="San Sebastián (Cau.)">San Sebastián (Cau.)</option>
+                    <option value="San Sebastián de Buenavista (Mag.)">San Sebastián de Buenavista (Mag.)</option>
+                    <option value="San Vicente (Ant.)">San Vicente (Ant.)</option>
+                    <option value="San Vicente de Chucurí (San.)">San Vicente de Chucurí (San.)</option>
+                    <option value="San Vicente del Caguán (Caq.)">San Vicente del Caguán (Caq.)</option>
+                    <option value="San Zenón (Mag.)">San Zenón (Mag.)</option>
+                    <option value="Sandoná (Nar.)">Sandoná (Nar.)</option>
+                    <option value="Santa Ana (Mag.)">Santa Ana (Mag.)</option>
+                    <option value="Santa Bárbara (Ant.)">Santa Bárbara (Ant.)</option>
+                    <option value="Santa Bárbara (San.)">Santa Bárbara (San.)</option>
+                    <option value="Santa Bárbara (Nar.)">Santa Bárbara (Nar.)</option>
+                    <option value="Santa Bárbara de Pinto (Mag.)">Santa Bárbara de Pinto (Mag.)</option>
+                    <option value="Santa Catalina (Bol.)">Santa Catalina (Bol.)</option>
+                    <option value="Santa Helena del Opón (San.)">Santa Helena del Opón (San.)</option>
+                    <option value="Santa Isabel (Tol.)">Santa Isabel (Tol.)</option>
+                    <option value="Santa Lucía (Atl.)">Santa Lucía (Atl.)</option>
+                    <option value="Santa María (Hui.)">Santa María (Hui.)</option>
+                    <option value="Santa María (Boy.)">Santa María (Boy.)</option>
+                    <option value="Santa Marta (Mag.)">Santa Marta (Mag.)</option>
+                    <option value="Santa Rosa (Bol.)">Santa Rosa (Bol.)</option>
+                    <option value="Santa Rosa (Cau.)">Santa Rosa (Cau.)</option>
+                    <option value="Santa Rosa de Cabal (Ris.)">Santa Rosa de Cabal (Ris.)</option>
+                    <option value="Santa Rosa de Osos (Ant.)">Santa Rosa de Osos (Ant.)</option>
+                    <option value="Santa Rosa de Viterbo (Boy.)">Santa Rosa de Viterbo (Boy.)</option>
+                    <option value="Santa Rosa del Sur (Bol.)">Santa Rosa del Sur (Bol.)</option>
+                    <option value="Santa Rosalía (Vid.)">Santa Rosalía (Vid.)</option>
+                    <option value="Santa Sofía (Boy.)">Santa Sofía (Boy.)</option>
+                    <option value="Santacruz (Nar.)">Santacruz (Nar.)</option>
+                    <option value="Santafé de Antioquia (Ant.)">Santafé de Antioquia (Ant.)</option>
+                    <option value="Santana (Boy.)">Santana (Boy.)</option>
+                    <option value="Santander de Quilichao (Cau.)">Santander de Quilichao (Cau.)</option>
+                    <option value="Santiago (NSa.)">Santiago (NSa.)</option>
+                    <option value="Santiago (Put.)">Santiago (Put.)</option>
+                    <option value="Santiago de Tolú (Suc.)">Santiago de Tolú (Suc.)</option>
+                    <option value="Santo Domingo (Ant.)">Santo Domingo (Ant.)</option>
+                    <option value="Santo Tomás (Atl.)">Santo Tomás (Atl.)</option>
+                    <option value="Santuario (Ris.)">Santuario (Ris.)</option>
+                    <option value="Sapuyes (Nar.)">Sapuyes (Nar.)</option>
+                    <option value="Saravena (Ara.)">Saravena (Ara.)</option>
+                    <option value="Sardinata (NSa.)">Sardinata (NSa.)</option>
+                    <option value="Sasaima (Cun.)">Sasaima (Cun.)</option>
+                    <option value="Sativanorte (Boy.)">Sativanorte (Boy.)</option>
+                    <option value="Sativasur (Boy.)">Sativasur (Boy.)</option>
+                    <option value="Segovia (Ant.)">Segovia (Ant.)</option>
+                    <option value="Sesquilé (Cun.)">Sesquilé (Cun.)</option>
+                    <option value="Sevilla (VaC.)">Sevilla (VaC.)</option>
+                    <option value="Siachoque (Boy.)">Siachoque (Boy.)</option>
+                    <option value="Sibaté (Cun.)">Sibaté (Cun.)</option>
+                    <option value="Sibundoy (Put.)">Sibundoy (Put.)</option>
+                    <option value="Silos (NSa.)">Silos (NSa.)</option>
+                    <option value="Silvania (Cun.)">Silvania (Cun.)</option>
+                    <option value="Silvia (Cau.)">Silvia (Cau.)</option>
+                    <option value="Simacota (San.)">Simacota (San.)</option>
+                    <option value="Simijaca (Cun.)">Simijaca (Cun.)</option>
+                    <option value="Simití (Bol.)">Simití (Bol.)</option>
+                    <option value="Sincelejo (Suc.)">Sincelejo (Suc.)</option>
+                    <option value="Sipí (Cho.)">Sipí (Cho.)</option>
+                    <option value="Sitionuevo (Mag.)">Sitionuevo (Mag.)</option>
+                    <option value="Soacha (Cun.)">Soacha (Cun.)</option>
+                    <option value="Soatá (Boy.)">Soatá (Boy.)</option>
+                    <option value="Socha (Boy.)">Socha (Boy.)</option>
+                    <option value="Socorro (San.)">Socorro (San.)</option>
+                    <option value="Socotá (Boy.)">Socotá (Boy.)</option>
+                    <option value="Sogamoso (Boy.)">Sogamoso (Boy.)</option>
+                    <option value="Solano (Caq.)">Solano (Caq.)</option>
+                    <option value="Soledad (Atl.)">Soledad (Atl.)</option>
+                    <option value="Solita (Caq.)">Solita (Caq.)</option>
+                    <option value="Somondoco (Boy.)">Somondoco (Boy.)</option>
+                    <option value="Sonson (Ant.)">Sonson (Ant.)</option>
+                    <option value="Sopetrán (Ant.)">Sopetrán (Ant.)</option>
+                    <option value="Soplaviento (Bol.)">Soplaviento (Bol.)</option>
+                    <option value="Sopó (Cun.)">Sopó (Cun.)</option>
+                    <option value="Sora (Boy.)">Sora (Boy.)</option>
+                    <option value="Soracá (Boy.)">Soracá (Boy.)</option>
+                    <option value="Sotaquirá (Boy.)">Sotaquirá (Boy.)</option>
+                    <option value="Sotara (Cau.)">Sotara (Cau.)</option>
+                    <option value="Suaita (San.)">Suaita (San.)</option>
+                    <option value="Suan (Atl.)">Suan (Atl.)</option>
+                    <option value="Suárez (Cau.)">Suárez (Cau.)</option>
+                    <option value="Suárez (Tol.)">Suárez (Tol.)</option>
+                    <option value="Suaza (Hui.)">Suaza (Hui.)</option>
+                    <option value="Subachoque (Cun.)">Subachoque (Cun.)</option>
+                    <option value="Sucre (San.)">Sucre (San.)</option>
+                    <option value="Sucre (Cau.)">Sucre (Cau.)</option>
+                    <option value="Sucre (Suc.)">Sucre (Suc.)</option>
+                    <option value="Suesca (Cun.)">Suesca (Cun.)</option>
+                    <option value="Supatá (Cun.)">Supatá (Cun.)</option>
+                    <option value="Supía (Cal.)">Supía (Cal.)</option>
+                    <option value="Suratá (San.)">Suratá (San.)</option>
+                    <option value="Susa (Cun.)">Susa (Cun.)</option>
+                    <option value="Susacón (Boy.)">Susacón (Boy.)</option>
+                    <option value="Sutamarchán (Boy.)">Sutamarchán (Boy.)</option>
+                    <option value="Sutatausa (Cun.)">Sutatausa (Cun.)</option>
+                    <option value="Sutatenza (Boy.)">Sutatenza (Boy.)</option>
+                    <option value="Tabio (Cun.)">Tabio (Cun.)</option>
+                    <option value="Tadó (Cho.)">Tadó (Cho.)</option>
+                    <option value="Talaigua Nuevo (Bol.)">Talaigua Nuevo (Bol.)</option>
+                    <option value="Tamalameque (Ces.)">Tamalameque (Ces.)</option>
+                    <option value="Támara (Cas.)">Támara (Cas.)</option>
+                    <option value="Tame (Ara.)">Tame (Ara.)</option>
+                    <option value="Támesis (Ant.)">Támesis (Ant.)</option>
+                    <option value="Taminango (Nar.)">Taminango (Nar.)</option>
+                    <option value="Tangua (Nar.)">Tangua (Nar.)</option>
+                    <option value="Taraira (Vau.)">Taraira (Vau.)</option>
+                    <option value="Tarapacá (Ama.)">Tarapacá (Ama.)</option>
+                    <option value="Tarazá (Ant.)">Tarazá (Ant.)</option>
+                    <option value="Tarqui (Hui.)">Tarqui (Hui.)</option>
+                    <option value="Tarso (Ant.)">Tarso (Ant.)</option>
+                    <option value="Tasco (Boy.)">Tasco (Boy.)</option>
+                    <option value="Tauramena (Cas.)">Tauramena (Cas.)</option>
+                    <option value="Tausa (Cun.)">Tausa (Cun.)</option>
+                    <option value="Tello (Hui.)">Tello (Hui.)</option>
+                    <option value="Tena (Cun.)">Tena (Cun.)</option>
+                    <option value="Tenerife (Mag.)">Tenerife (Mag.)</option>
+                    <option value="Tenjo (Cun.)">Tenjo (Cun.)</option>
+                    <option value="Tenza (Boy.)">Tenza (Boy.)</option>
+                    <option value="Teorama (NSa.)">Teorama (NSa.)</option>
+                    <option value="Teruel (Hui.)">Teruel (Hui.)</option>
+                    <option value="Tesalia (Hui.)">Tesalia (Hui.)</option>
+                    <option value="Tibacuy (Cun.)">Tibacuy (Cun.)</option>
+                    <option value="Tibaná (Boy.)">Tibaná (Boy.)</option>
+                    <option value="Tibasosa (Boy.)">Tibasosa (Boy.)</option>
+                    <option value="Tibirita (Cun.)">Tibirita (Cun.)</option>
+                    <option value="Tibú (NSa.)">Tibú (NSa.)</option>
+                    <option value="Tierralta (Cor.)">Tierralta (Cor.)</option>
+                    <option value="Timaná (Hui.)">Timaná (Hui.)</option>
+                    <option value="Timbío (Cau.)">Timbío (Cau.)</option>
+                    <option value="Timbiquí (Cau.)">Timbiquí (Cau.)</option>
+                    <option value="Tinjacá (Boy.)">Tinjacá (Boy.)</option>
+                    <option value="Tipacoque (Boy.)">Tipacoque (Boy.)</option>
+                    <option value="Tiquisio (Bol.)">Tiquisio (Bol.)</option>
+                    <option value="Titiribí (Ant.)">Titiribí (Ant.)</option>
+                    <option value="Toca (Boy.)">Toca (Boy.)</option>
+                    <option value="Tocaima (Cun.)">Tocaima (Cun.)</option>
+                    <option value="Tocancipá (Cun.)">Tocancipá (Cun.)</option>
+                    <option value="Togüí (Boy.)">Togüí (Boy.)</option>
+                    <option value="Toledo (Ant.)">Toledo (Ant.)</option>
+                    <option value="Toledo (NSa.)">Toledo (NSa.)</option>
+                    <option value="Tolú Viejo (Suc.)">Tolú Viejo (Suc.)</option>
+                    <option value="Tona (San.)">Tona (San.)</option>
+                    <option value="Tópaga (Boy.)">Tópaga (Boy.)</option>
+                    <option value="Topaipí (Cun.)">Topaipí (Cun.)</option>
+                    <option value="Toribio (Cau.)">Toribio (Cau.)</option>
+                    <option value="Toro (VaC.)">Toro (VaC.)</option>
+                    <option value="Tota (Boy.)">Tota (Boy.)</option>
+                    <option value="Totoró (Cau.)">Totoró (Cau.)</option>
+                    <option value="Trinidad (Cas.)">Trinidad (Cas.)</option>
+                    <option value="Trujillo (VaC.)">Trujillo (VaC.)</option>
+                    <option value="Tubará (Atl.)">Tubará (Atl.)</option>
+                    <option value="Tuchín (Cor.)">Tuchín (Cor.)</option>
+                    <option value="Tuluá (VaC.)">Tuluá (VaC.)</option>
+                    <option value="Tunja (Boy.)">Tunja (Boy.)</option>
+                    <option value="Tununguá (Boy.)">Tununguá (Boy.)</option>
+                    <option value="Túquerres (Nar.)">Túquerres (Nar.)</option>
+                    <option value="Turbaco (Bol.)">Turbaco (Bol.)</option>
+                    <option value="Turbaná (Bol.)">Turbaná (Bol.)</option>
+                    <option value="Turbo (Ant.)">Turbo (Ant.)</option>
+                    <option value="Turmequé (Boy.)">Turmequé (Boy.)</option>
+                    <option value="Tuta (Boy.)">Tuta (Boy.)</option>
+                    <option value="Tutazá (Boy.)">Tutazá (Boy.)</option>
+                    <option value="Ubalá (Cun.)">Ubalá (Cun.)</option>
+                    <option value="Ubaque (Cun.)">Ubaque (Cun.)</option>
+                    <option value="Ulloa (VaC.)">Ulloa (VaC.)</option>
+                    <option value="Umbita (Boy.)">Umbita (Boy.)</option>
+                    <option value="Une (Cun.)">Une (Cun.)</option>
+                    <option value="Unguía (Cho.)">Unguía (Cho.)</option>
+                    <option value="Unión Panamericana (Cho.)">Unión Panamericana (Cho.)</option>
+                    <option value="Uramita (Ant.)">Uramita (Ant.)</option>
+                    <option value="Uribe (Met.)">Uribe (Met.)</option>
+                    <option value="Uribia (LaG.)">Uribia (LaG.)</option>
+                    <option value="Urrao (Ant.)">Urrao (Ant.)</option>
+                    <option value="Urumita (LaG.)">Urumita (LaG.)</option>
+                    <option value="Usiacurí (Atl.)">Usiacurí (Atl.)</option>
+                    <option value="Útica (Cun.)">Útica (Cun.)</option>
+                    <option value="Valdivia (Ant.)">Valdivia (Ant.)</option>
+                    <option value="Valencia (Cor.)">Valencia (Cor.)</option>
+                    <option value="Valle de San José (San.)">Valle de San José (San.)</option>
+                    <option value="Valle de San Juan (Tol.)">Valle de San Juan (Tol.)</option>
+                    <option value="Valle del Guamuez (Put.)">Valle del Guamuez (Put.)</option>
+                    <option value="Valledupar (Ces.)">Valledupar (Ces.)</option>
+                    <option value="Valparaíso (Ant.)">Valparaíso (Ant.)</option>
+                    <option value="Valparaíso (Caq.)">Valparaíso (Caq.)</option>
+                    <option value="Vegachí (Ant.)">Vegachí (Ant.)</option>
+                    <option value="Vélez (San.)">Vélez (San.)</option>
+                    <option value="Venadillo (Tol.)">Venadillo (Tol.)</option>
+                    <option value="Venecia (Ant.)">Venecia (Ant.)</option>
+                    <option value="Venecia (Cun.)">Venecia (Cun.)</option>
+                    <option value="Ventaquemada (Boy.)">Ventaquemada (Boy.)</option>
+                    <option value="Vergara (Cun.)">Vergara (Cun.)</option>
+                    <option value="Versalles (VaC.)">Versalles (VaC.)</option>
+                    <option value="Vetas (San.)">Vetas (San.)</option>
+                    <option value="Vianí (Cun.)">Vianí (Cun.)</option>
+                    <option value="Victoria (Cal.)">Victoria (Cal.)</option>
+                    <option value="Vigía del Fuerte (Ant.)">Vigía del Fuerte (Ant.)</option>
+                    <option value="Vijes (VaC.)">Vijes (VaC.)</option>
+                    <option value="Villa Caro (NSa.)">Villa Caro (NSa.)</option>
+                    <option value="Villa de Leyva (Boy.)">Villa de Leyva (Boy.)</option>
+                    <option value="Villa de San Diego de Ubate (Cun.)">Villa de San Diego de Ubate (Cun.)</option>
+                    <option value="Villa del Rosario (NSa.)">Villa del Rosario (NSa.)</option>
+                    <option value="Villa Rica (Cau.)">Villa Rica (Cau.)</option>
+                    <option value="Villagarzón (Put.)">Villagarzón (Put.)</option>
+                    <option value="Villagómez (Cun.)">Villagómez (Cun.)</option>
+                    <option value="Villahermosa (Tol.)">Villahermosa (Tol.)</option>
+                    <option value="Villamaría (Cal.)">Villamaría (Cal.)</option>
+                    <option value="Villanueva (Bol.)">Villanueva (Bol.)</option>
+                    <option value="Villanueva (San.)">Villanueva (San.)</option>
+                    <option value="Villanueva (Cas.)">Villanueva (Cas.)</option>
+                    <option value="Villanueva (LaG.)">Villanueva (LaG.)</option>
+                    <option value="Villapinzón (Cun.)">Villapinzón (Cun.)</option>
+                    <option value="Villarrica (Tol.)">Villarrica (Tol.)</option>
+                    <option value="Villavicencio (Met.)">Villavicencio (Met.)</option>
+                    <option value="Villavieja (Hui.)">Villavieja (Hui.)</option>
+                    <option value="Villeta (Cun.)">Villeta (Cun.)</option>
+                    <option value="Viotá (Cun.)">Viotá (Cun.)</option>
+                    <option value="Viracachá (Boy.)">Viracachá (Boy.)</option>
+                    <option value="Vistahermosa (Met.)">Vistahermosa (Met.)</option>
+                    <option value="Viterbo (Cal.)">Viterbo (Cal.)</option>
+                    <option value="Yacopí (Cun.)">Yacopí (Cun.)</option>
+                    <option value="Yacuanquer (Nar.)">Yacuanquer (Nar.)</option>
+                    <option value="Yaguará (Hui.)">Yaguará (Hui.)</option>
+                    <option value="Yalí (Ant.)">Yalí (Ant.)</option>
+                    <option value="Yarumal (Ant.)">Yarumal (Ant.)</option>
+                    <option value="Yavaraté (Vau.)">Yavaraté (Vau.)</option>
+                    <option value="Yolombó (Ant.)">Yolombó (Ant.)</option>
+                    <option value="Yondó (Ant.)">Yondó (Ant.)</option>
+                    <option value="Yopal (Cas.)">Yopal (Cas.)</option>
+                    <option value="Yotoco (VaC.)">Yotoco (VaC.)</option>
+                    <option value="Yumbo (VaC.)">Yumbo (VaC.)</option>
+                    <option value="Zambrano (Bol.)">Zambrano (Bol.)</option>
+                    <option value="Zapatoca (San.)">Zapatoca (San.)</option>
+                    <option value="Zapayán (Mag.)">Zapayán (Mag.)</option>
+                    <option value="Zaragoza (Ant.)">Zaragoza (Ant.)</option>
+                    <option value="Zarzal (VaC.)">Zarzal (VaC.)</option>
+                    <option value="Zetaquira (Boy.)">Zetaquira (Boy.)</option>
+                    <option value="Zipacón (Cun.)">Zipacón (Cun.)</option>
+                    <option value="Zipaquirá (Cun.)">Zipaquirá (Cun.)</option>
+                    <option value="Zona Bananera (Mag.)">Zona Bananera (Mag.)</option>
+                </datalist>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-3">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                        <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="parentesco" id="parentesco" class="form-control" list="items" placeholder="Parentesco" required>
+                <datalist id="items">
+                    <option value="autoridad competente">autoridad competente</option>
+                    <option value="familiar dentro del primer grado de consanguinidad">familiar dentro del primer grado de consanguinidad</option>
+                    <option value="paciente">paciente</option>
+                    <option value="tercer autorizado">tercer autorizado</option>
+                </datalist>
+            </div>
+        </div>
+    </div>
+
+    <!--Ingreso datos del paciente-->
+    <label class="form-control-label">DATOS DEL PACIENTE</label>
+    <div class="form-group">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="nombre1Paciente" id="nombre1Paciente" class="form-control" placeholder="Primer Nombre" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="nombre2Paciente" id="nombre2Paciente" class="form-control" placeholder="Segundo Nombre" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="apellido1Paciente" id="apellido1Paciente" class="form-control" placeholder="Primer Apellido" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="apellido2Paciente" id="apellido2Paciente" class="form-control" placeholder="Segundo Apellido" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+                        <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"></path>
+                        <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="tipoIDPaciente" id="tipoIDPaciente" class="form-control" list="itemsDoc" placeholder="Tipo de Documento" required>
+                <datalist id="itemsDoc">
+                </datalist>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                        <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="numIDPaciente" id="numIDPaciente" class="form-control" placeholder="Identificación" required>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group mb-3">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484-.08.08-.162.158-.242.234-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="expedicionIDPaciente" id="expedicionIDPaciente" class="form-control" list="itemsExp" placeholder="Lugar Expedición" required>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Teléfono" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"></path>
+                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="fechaIngreso" id="fechaIngreso" placeholder="Fecha Ingreso" onfocus="(this.type = 'date')" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"></path>
+                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="fechaEgreso" id="fechaEgreso" placeholder="Fecha Egreso" onfocus="(this.type = 'date')" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16">
+                        <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"></path>
+                        <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"></path>
+                    </svg>
+                </span>
+                <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo Electrónico">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                        <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="numCaso" id="numCaso" class="form-control" placeholder="Caso" required>
+            </div>
+        </div>
+    </div>
+
+    <!--Checkbox Soportes Solicitados-->
+    <label class="form-control-label">SOPORTES SOLICITADOS</label>
+    <div class="form-group">
+        <div class="form-inline col-md-2">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="histClinica" id="histClinica"> Historia Clínica
+                </label>
+            </div>
+        </div>
+        <div class="form-inline col-md-2">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="imagenesDx" id="imagenesDx"> Imágenes Diagnósticas
+                </label>
+            </div>
+        </div>
+        <div class="form-inline col-md-2">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="lecturaRx" id="lecturaRx"> Lectura de Imágenes
+                </label>
+            </div>
+        </div>
+        <div class="form-inline col-md-2">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="laboratorio" id="laboratorio"> Laboratorios
+                </label>
+            </div>
+        </div>
+        <div class="form-inline col-md-2">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="certificado" id="certificado"> Certificados
+                </label>
+            </div>
+        </div>
+        <div class="form-inline col-md-2">
+            <div class="checkbox">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="furips" id="furips"> FURIPS
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                        <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z"></path>
+                    </svg>
+                </span>
+                <input type="text" name="numFolio" id="numFolio" class="form-control" placeholder="Folio" required>
+            </div>
+        </div>
+    </div>
+
+    <!--Fecha y Hora de entrega-->
+    <label class="form-control-label">FECHA Y HORA DE ENTREGA</label>
+    <div class="form-group">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"></path>
+                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+                    </svg>
+                </span>
+                <input type="datetime-local" name="fechaEntrega" id="fechaEntrega" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2">
+            @*<button type="submit" class="btn btn-success">Guardar</button>*@
+            <button id="btnSave" name="btnSave" class="btn btn-success" onclick="GuardarDatosSolicitud();">Guardar</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    
+    <script src="~/Scripts/JS_SolicitudSIAU.js"></script>
+
+}
