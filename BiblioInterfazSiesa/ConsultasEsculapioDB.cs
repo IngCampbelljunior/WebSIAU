@@ -40,40 +40,29 @@ namespace LiloSoft.Siesa.Interfaz
 
         #region Metodos GET Consultas
 
-#pragma warning disable CS0436 // El tipo 'ConsultaIPEmpresas' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaIPEmpresas' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
+
         public List<ConsultaIPEmpresas> GetIpEmpresas(string Empresa)
-#pragma warning restore CS0436 // El tipo 'ConsultaIPEmpresas' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaIPEmpresas' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
         {
-            var sql = @"
-SELECT Empresa, IpConexion, Descripcion, NombreComercial as Ubicacion
- FROM Ipconexion_Empresas
-WHERE Empresa = :Empresa 
- Order by IpConexion
-";
+            var sql = @"SELECT Empresa, IpConexion, Descripcion, NombreComercial as Ubicacion
+ FROM Ipconexion_Empresas WHERE Empresa = :Empresa Order by IpConexion";
             var lstPars = new List<Parametro>();
             lstPars.AddParametro("Empresa", Empresa);
-#pragma warning disable CS0436 // El tipo 'ConsultaIPEmpresas' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaIPEmpresas' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
             return ExecuteGetLista<ConsultaIPEmpresas>(sql, false, lstPars.ToArray());
-#pragma warning restore CS0436 // El tipo 'ConsultaIPEmpresas' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaIPEmpresas' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
         }
 
-#pragma warning disable CS0436 // El tipo 'ConsultaIPEmpresas' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaIPEmpresas' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
+#pragma warning disable CS0436 // El tipo entra en conflicto con un tipo importado
         public List<ConsultaIPEmpresas> GetCodigoEmpresa(string IpConexion) //
-#pragma warning restore CS0436 // El tipo 'ConsultaIPEmpresas' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaIPEmpresas' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
+#pragma warning restore CS0436 // El tipo entra en conflicto con un tipo importado
         {
-            var sql = @"
-SELECT Empresa FROM Ipconexion_Empresas
-WHERE IpConexion Like CONCAT('%',:IpConexion,'%') Order by IpConexion ";
+            var sql = @"SELECT Empresa FROM Ipconexion_Empresas
+WHERE IpConexion Like CONCAT('%',:IpConexion,'%') Order by IpConexion";
             var lstPars = new List<Parametro>();
             lstPars.AddParametro("IpConexion", IpConexion);
-#pragma warning disable CS0436 // El tipo 'ConsultaIPEmpresas' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaIPEmpresas' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
             return ExecuteGetLista<ConsultaIPEmpresas>(sql, false, lstPars.ToArray());
-#pragma warning restore CS0436 // El tipo 'ConsultaIPEmpresas' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaIPEmpresas' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
         }
 
-#pragma warning disable CS0436 // El tipo 'ConsultaUsuariosAdv' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaUsuariosAdv' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
+
         public List<ConsultaUsuariosAdv> GetUsuarioReporInvestigacion(string empresa, string usuario)
-#pragma warning restore CS0436 // El tipo 'ConsultaUsuariosAdv' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaUsuariosAdv' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
         {
             var sql = @"SELECT a.Empresa,a.usuario FROM usuarios_repor_invest a Inner Join Usuarios b On a.usuario=b.usuario WHERE a.usuario=:usuario And a.empresa=:empresa AND a.estado='A'";
 
@@ -82,27 +71,15 @@ WHERE IpConexion Like CONCAT('%',:IpConexion,'%') Order by IpConexion ";
             lstPars.AddParametro("usuario", usuario);
 
             //sql = sqlBld.ToString();
-#pragma warning disable CS0436 // El tipo 'ConsultaUsuariosAdv' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaUsuariosAdv' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
             return ExecuteGetLista<ConsultaUsuariosAdv>(sql, false, lstPars.ToArray());
-#pragma warning restore CS0436 // El tipo 'ConsultaUsuariosAdv' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'ConsultaUsuariosAdv' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
         }
 
-#pragma warning disable CS0436 // El tipo 'PacientesSIRAS' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'PacientesSIRAS' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
-        public List<PacientesSIRAS> GetCuentaMIPRES(string Empresa, string Criterio)
-#pragma warning restore CS0436 // El tipo 'PacientesSIRAS' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'PacientesSIRAS' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
-        {
-            string sql = "SELECT c.NoCuenta FROM Cuenta c INNER JOIN Pacientes p ON c.NoHistoria = p.NoHistoria WHERE c.Empresa = :Empresa AND c.Estado in ('A','C') And c.NoHistoria = :Criterio Order by c.nocuenta Desc";
-            List<Parametro> lstPars = new List<Parametro>();
-            lstPars.AddParametro("Empresa", Empresa);
-            lstPars.AddParametro("Criterio", Criterio);
-#pragma warning disable CS0436 // El tipo 'PacientesSIRAS' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'PacientesSIRAS' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
-            return base.ExecuteGetLista<PacientesSIRAS>(sql, false, lstPars.ToArray());
-#pragma warning restore CS0436 // El tipo 'PacientesSIRAS' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'PacientesSIRAS' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
-        }
 
         ////---Mi metodos
 
+#pragma warning disable CS0436 // El tipo entra en conflicto con un tipo importado
         public List<Entidades> GetAseguradoras(string Empresa)
+#pragma warning restore CS0436 // El tipo entra en conflicto con un tipo importado
         {
             string sql = "SELECT DISTINCT a.nitentidad, a.nombre_entidad FROM entidades a INNER JOIN convenios b ON a.empresa=b.empresa AND a.nitentidad=b.nitentidad AND b.fec_fin_vigencia>=CURRENT_DATE() AND b.estado='A' AND b.Soat='S' WHERE a.empresa=:Empresa AND a.estado='A' ORDER BY a.nombre_entidad";
             List<Parametro> lstPars = new List<Parametro>();
@@ -358,7 +335,7 @@ WHERE IpConexion Like CONCAT('%',:IpConexion,'%') Order by IpConexion ";
     /// 
 #pragma warning disable CS0436 // El tipo 'IEstadosTrazabilidad' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'IEstadosTrazabilidad' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
     public class TrazabilidadHistorico : IEstadosTrazabilidad
-#pragma warning restore CS0436 // El tipo 'IEstadosTrazabilidad' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'IEstadosTrazabilidad' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
+
     {
         [DataObjectField(true)]
         public EnteroLargo IdTrazabilidad { get; set; }
@@ -1549,8 +1526,6 @@ WHERE IpConexion Like CONCAT('%',:IpConexion,'%') Order by IpConexion ";
         public string CorreoInvest { get; set; }
         public string AgenciaInvest { get; set; }
         public string Aseguradora { get; set; }
-        //public string FirmaDigital { get; set; }
-        //public string Estado { get; set; }
         public string empresa { get; set; }
         public string investigador { get; set; }
 

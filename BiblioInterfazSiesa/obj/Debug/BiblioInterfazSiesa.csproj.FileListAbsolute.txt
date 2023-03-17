@@ -141,7 +141,6 @@ C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\bin\Debug\Ne
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\bin\Debug\Spire.Doc.xml
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\bin\Debug\Spire.Pdf.xml
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\bin\Debug\System.Net.Http.Formatting.xml
-C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\obj\Debug\BiblioInterfazSiesa.csproj.AssemblyReference.cache
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\obj\Debug\BiblioInterfazSiesa.csproj.CoreCompileInputs.cache
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\obj\Debug\BiblioInterfazSiesa.csproj.CopyComplete
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\obj\Debug\LiloSoft.SiesaInterfazLib.dll

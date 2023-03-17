@@ -438,7 +438,6 @@
     <Content Include="Extras\timepicker\css\timepicker.less" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\ReporteInvestigador.csproj.AssemblyReference.cache" />
-    <Content Include="Documentos\REPOR_INV.docx" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -448,6 +447,7 @@
     <Content Include="obj\Debug\WebSIAU.csproj.AssemblyReference.cache" />
     <Content Include="obj\Debug\WebSIAU.csproj.CopyComplete" />
     <Content Include="obj\Debug\WebSIAU.csproj.CoreCompileInputs.cache" />
+    <Content Include="Documentos\Acta_SIAU.docx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="obj\Debug\WebSIAU.csproj.FileListAbsolute.txt" />
     <Content Include="Scripts\bootstrap.js" />
@@ -603,9 +603,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
-    <Content Include="Views\Home\GenerarActa.cshtml" />
     <Content Include="Views\Home\RegistrarInvestigador.cshtml" />
     <Content Include="Views\Home\ConsultarFecha.cshtml" />
+    <Content Include="Views\Home\DatosSolicitud.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

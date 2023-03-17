@@ -65,7 +65,7 @@ namespace WebSIAU.Controllers
             }
             else
             {
-                return RedirectToAction("GenerarActa");
+                return RedirectToAction("DatosSolicitud");
             }
         }
 
@@ -81,25 +81,25 @@ namespace WebSIAU.Controllers
             return View();
         }
 
-        //public ActionResult RegistrarInvestigador()
-        //{
-        //    var codigoEmp = (string)Session["CodEmpresa"];
-        //    var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
-        //    List<Entidades> result = dataBase.GetAseguradoras(codigoEmp);
-        //    ViewBag.aseguradora = new SelectList(result, "nitentidad", "nombre_entidad");
-        //    return View();
-        //}
+        public ActionResult RegistrarInvestigador()
+        {
+            var codigoEmp = (string)Session["CodEmpresa"];
+            var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
+            List<Entidades> result = dataBase.GetAseguradoras(codigoEmp);
+            ViewBag.aseguradora = new SelectList(result, "nitentidad", "nombre_entidad");
+            return View();
+        }
 
-        //public ActionResult ConsultarFecha()
-        //{
-        //    var codigoEmp = (string)Session["CodEmpresa"];
-        //    var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
-        //    List<Entidades> result = dataBase.GetAseguradoras(codigoEmp);
-        //    ViewBag.aseguradora = new SelectList(result, "nitentidad", "nombre_entidad");
-        //    return View();
-        //}
+        public ActionResult ConsultarFecha()
+        {
+            var codigoEmp = (string)Session["CodEmpresa"];
+            var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
+            List<Entidades> result = dataBase.GetAseguradoras(codigoEmp);
+            ViewBag.aseguradora = new SelectList(result, "nitentidad", "nombre_entidad");
+            return View();
+        }
 
-        public ActionResult GenerarActa()
+        public ActionResult DatosSolicitud()
         {
             var codigoEmp = (string)Session["CodEmpresa"];
             var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
@@ -130,16 +130,17 @@ namespace WebSIAU.Controllers
         //}
 
         [HttpPost]
-        public ActionResult GenerarActa(Fecha fecha_solicitud, string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string tel_paciente, string email_paciente, string caso, byte hist_clinica, byte imagen_diag, byte lectura_rx, byte laboratorio, byte certificado, byte furips, string num_folio, Fecha fecha_hora_entrega)
+        public ActionResult DatosSolicitud(Fecha fecha_solicitud, string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string tel_paciente, string email_paciente, string caso, byte hist_clinica, byte imagen_diag, byte lectura_rx, byte laboratorio, byte certificado, byte furips, string num_folio, Fecha fecha_hora_entrega)
         {
             ObtenerConexion();
-            string CodEmpre = (string)Session["CodEmpresa"];
+            string Empresa = (string)Session["CodEmpresa"];
             var resultado = string.Empty;
             var dataDb = new ConsultasEsculapioDB(SqlDbMysql);
             var sql = "Insert_solicitudDocSiau";
 
             List<Parametro> param = new List<Parametro>();
             param.AddParametro("fechSolic", fecha_solicitud);
+            param.AddParametro("Empresa", Empresa);
             param.AddParametro("nom1Solic", nombre1_solicita);
             param.AddParametro("nom2Solic", nombre2_solicita);
             param.AddParametro("apell1Solic", apellido1_solicita);
@@ -571,7 +572,7 @@ namespace WebSIAU.Controllers
 
                     //CodigoEmp = Request.Form["#hfCodigoEmp"].ToString();
                     Session["userID"] = user.usuario;
-                    return RedirectToAction("GenerarActa");
+                    return RedirectToAction("DatosSolicitud");
                 }
                 else
                 {

@@ -164,6 +164,8 @@ C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\System.Web.WebPages.
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\WebGrease.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\Microsoft.mshtml.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\LiloSoft.MVCSiesaLib.pdb
+C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\LiloSoft.SiesaInterfazLib.pdb
+C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\LiloSoft.SiesaInterfazLib.dll.config
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\Newtonsoft.Json.xml
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\Spire.Doc.xml
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\Spire.Pdf.xml
@@ -183,10 +185,8 @@ C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\es\System.Web.Razor.
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\es\System.Web.WebPages.resources.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.AssemblyReference.cache
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.CoreCompileInputs.cache
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.CopyComplete
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\ReporteInvestigador.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\ReporteInvestigador.pdb
-C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\LiloSoft.SiesaInterfazLib.pdb
-C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\LiloSoft.SiesaInterfazLib.dll.config
+C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.AssemblyReference.cache
