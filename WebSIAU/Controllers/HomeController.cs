@@ -130,7 +130,7 @@ namespace WebSIAU.Controllers
         //}
 
         [HttpPost]
-        public ActionResult DatosSolicitud(Fecha fecha_solicitud, string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string tel_paciente, string email_paciente, string caso, byte hist_clinica, byte imagen_diag, byte lectura_rx, byte laboratorio, byte certificado, byte furips, string num_folio, Fecha fecha_hora_entrega)
+        public ActionResult DatosSolicitud(Fecha fecha_solicitud, string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string NoIdentificacion, string tel_paciente, string email_paciente, string caso, Fecha fechaIngreso, Fecha fechaEgreso, byte hist_clinica, byte imagen_diag, byte lectura_rx, byte laboratorio, byte certificado, byte furips, string num_folio, Fecha fecha_hora_entrega, string estado_solicitud)
         {
             ObtenerConexion();
             string Empresa = (string)Session["CodEmpresa"];
@@ -149,9 +149,12 @@ namespace WebSIAU.Controllers
             param.AddParametro("numIDSolic", num_doc_solicta);
             param.AddParametro("expIDSolic", exp_doc_solicita);
             param.AddParametro("parentesco", parentesco_solicita);
+            param.AddParametro("idPaciente", NoIdentificacion);
             param.AddParametro("telefono", tel_paciente);
             param.AddParametro("correo", email_paciente);
             param.AddParametro("nocaso", Convert.ToDecimal(caso));
+            param.AddParametro("nocaso", fechaIngreso);
+            param.AddParametro("nocaso", fechaEgreso);
             param.AddParametro("histClinica", hist_clinica);
             param.AddParametro("imagenesDx", imagen_diag);
             param.AddParametro("lecturaRx", lectura_rx);
@@ -160,8 +163,7 @@ namespace WebSIAU.Controllers
             param.AddParametro("furips", furips);
             param.AddParametro("numFolio", num_folio);
             param.AddParametro("fechaEntrega", fecha_hora_entrega);
-
-
+            param.AddParametro("estadoSolicitud", estado_solicitud);
 
             if (!SqlDbMysql.EjecutarComando(sql, true, param.ToArray()))
             {

@@ -111,7 +111,7 @@ WHERE IpConexion Like CONCAT('%',:IpConexion,'%') Order by IpConexion";
         //#pragma warning restore CS0436 // El tipo 'investigador_reporte' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'investigador_reporte' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
         //        }
         //Para SIAU
-        public List<solicitud_doc_siau> GetSolicitudDocSiau(string Empresa)
+        public List<solicitud_doc_siau> GetSolicitudDocSiau(string Empresa, decimal NoCaso, string Usuario)
         {
             string sql = @"SELECT i.empresa, a.nombre_entidad, i.Fecha_elaboracion, CONCAT_WS(' ',i.Nombres,i.Apellidos) AS paciente, i.TipoDocumento, 
                             i.NoDocumento, i.CiudadExp, i.Caso, i.FechaIngreso, i.HoraIngreso, i.Fecha_acc, i.Hora_acc, i.Diagnostico, i.Relato, CONCAT_WS(' ', v.Nombres, v.Apellidos) AS investigadores,
@@ -123,14 +123,14 @@ WHERE IpConexion Like CONCAT('%',:IpConexion,'%') Order by IpConexion";
                             WHERE i.empresa =:Empresa AND i.caso =:NoCaso";
 
             List<Parametro> lstPars = new List<Parametro>();
-            lstPars.AddParametro("Empresa", Empresa);
-            //lstPars.AddParametro("NoCaso", NoCaso);
-            //lstPars.AddParametro("Usuario", Usuario);
+            lstPars.AddParametro("empresa", Empresa);
+            lstPars.AddParametro("NoCaso", NoCaso);
+            lstPars.AddParametro("Usuario", Usuario);
 
             return base.ExecuteGetLista<solicitud_doc_siau>(sql, false, lstPars.ToArray());
 
         }
-#pragma warning disable CS0436 // El tipo 'DatosInvestigadores' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'DatosInvestigadores' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
+
 //        public List<DatosInvestigadores> GetInvestigadores(string Empresa)
 //#pragma warning restore CS0436 // El tipo 'DatosInvestigadores' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'DatosInvestigadores' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
 //        {
@@ -151,7 +151,6 @@ WHERE IpConexion Like CONCAT('%',:IpConexion,'%') Order by IpConexion";
             return id;
         }
 
-#pragma warning disable CS0436 // El tipo 'entrega_mipres' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'entrega_mipres' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
         public List<entrega_mipres> GetReportePrescripciones(string Empresa, Fecha FechaIni, Fecha FechaFin)
 #pragma warning restore CS0436 // El tipo 'entrega_mipres' de 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs' está en conflicto con el tipo importado 'entrega_mipres' de 'LiloSoft.SiesaInterfazLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Se usará el tipo definido en 'C:\Users\Usuario de red\Documents\Repos\WebSIAU\BiblioInterfazSiesa\ConsultasEsculapioDB.cs'.
         {
@@ -1559,10 +1558,13 @@ WHERE IpConexion Like CONCAT('%',:IpConexion,'%') Order by IpConexion";
         public string num_doc_solicta { get; set; }
         public string exp_doc_solicita { get; set; }
         public string parentesco_solicita { get; set; }
+        public string NoIdentificacion { get; set; }
         public string tel_paciente { get; set; }
         public string email_paciente { get; set; }
         public string caso { get; set; }
         public string empresa { get; set; }
+        public Fecha fechaIngreso { get; set; }
+        public Fecha fechaEgreso { get; set; }
         public byte[] hist_clinica { get; set; }
         public byte[] imagen_diag { get; set; }
         public byte[] lectura_rx { get; set; }
