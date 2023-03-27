@@ -19,7 +19,7 @@ namespace SIS.EsculapioWeb.HistoriaClinica.Models.PruebaEsculapio
         public bool MostrarDatos { get; set; }
         public DatosCasoBasico Caso { get; set; }
         public List<ResponsablesCaso> Responsables { get; set; }
-        public List<ResponsablesCasoTrazabilidad> ResponsablesTrazabilidad { get; set; }
+        //public List<ResponsablesCasoTrazabilidad> ResponsablesTrazabilidad { get; set; }
         public List<HistoriasClinicasEmpresas> Historias { get; set; }
         public TreeWeb ArbolHistorias { get; set; }
         public List<TrazabilidadHistorico> HistoriaTrazabilidad { get; set; }
