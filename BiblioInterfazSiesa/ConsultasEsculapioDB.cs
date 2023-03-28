@@ -60,17 +60,17 @@ namespace LiloSoft.Siesa.Interfaz
         }
 
 
-        //public List<ConsultaUsuariosAdv> GetUsuarioReporInvestigacion(string empresa, string usuario)
-        //{
-        //    var sql = @"SELECT a.Empresa,a.usuario FROM usuarios_repor_invest a Inner Join Usuarios b On a.usuario=b.usuario WHERE a.usuario=:usuario And a.empresa=:empresa AND a.estado='A'";
+        public List<ConsultaUsuariosAdv> GetUsuarioReporInvestigacion(string empresa, string usuario)
+        {
+            var sql = @"SELECT a.Empresa,a.usuario FROM usuarios_repor_invest a Inner Join Usuarios b On a.usuario=b.usuario WHERE a.usuario=:usuario And a.empresa=:empresa AND a.estado='A'";
 
-        //    var lstPars = new List<Parametro>();
-        //    lstPars.AddParametro("Empresa", empresa);
-        //    lstPars.AddParametro("usuario", usuario);
+            var lstPars = new List<Parametro>();
+            lstPars.AddParametro("Empresa", empresa);
+            lstPars.AddParametro("usuario", usuario);
 
-        //    //sql = sqlBld.ToString();
-        //    return ExecuteGetLista<ConsultaUsuariosAdv>(sql, false, lstPars.ToArray());
-        //}
+            //sql = sqlBld.ToString();
+            return ExecuteGetLista<ConsultaUsuariosAdv>(sql, false, lstPars.ToArray());
+        }
 
 
         ////---Mi metodos
@@ -192,7 +192,7 @@ namespace LiloSoft.Siesa.Interfaz
         }
         public string Medida_Edad { get; set; }
     }
-        
+
     public class ResponsablesCaso
     {
         public Entero ConsInterno { get; set; }
@@ -208,7 +208,7 @@ namespace LiloSoft.Siesa.Interfaz
         string CodEstadoTrazabilidad { get; set; }
         string NombreEstadoTrazabilidad { get; set; }
     }
-           
+
     public class TrazabilidadHistorico : IEstadosTrazabilidad
 
     {
@@ -381,7 +381,7 @@ namespace LiloSoft.Siesa.Interfaz
     }
     public class SampleViewModel
     {
-        
+
         public string Question { get; set; }
 
         //See here for list of answers
@@ -420,5 +420,3 @@ namespace LiloSoft.Siesa.Interfaz
     #endregion
 
 }
-
-

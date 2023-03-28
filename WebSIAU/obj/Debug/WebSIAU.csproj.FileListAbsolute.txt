@@ -94,6 +94,11 @@ C:\Users\Usuario de red\Documents\Repos\WebSIAU\ReporteInvestigador\obj\Debug\We
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\ReporteInvestigador\obj\Debug\WebSIAU.csproj.CopyComplete
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\ReporteInvestigador\obj\Debug\ReporteInvestigador.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\ReporteInvestigador\obj\Debug\ReporteInvestigador.pdb
+C:\Users\Usuario de red\Documents\Repos\WebSIAU - copia\WebSIAU\obj\Debug\WebSIAU.csproj.AssemblyReference.cache
+C:\Users\Usuario de red\Documents\Repos\WebSIAU - copia\WebSIAU\obj\Debug\WebSIAU.csproj.CoreCompileInputs.cache
+C:\Users\Usuario de red\Documents\Repos\WebSIAU - copia\WebSIAU\obj\Debug\ReporteInvestigador.dll
+C:\Users\Usuario de red\Documents\Repos\WebSIAU - copia\WebSIAU\obj\Debug\ReporteInvestigador.pdb
+C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.CoreCompileInputs.cache
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\ReporteInvestigador.dll.config
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\ReporteInvestigador.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\ReporteInvestigador.pdb
@@ -186,7 +191,6 @@ C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\es\System.Web.WebPag
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\bin\es\System.Web.WebPages.Razor.resources.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.AssemblyReference.cache
-C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.CoreCompileInputs.cache
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\WebSIAU.csproj.CopyComplete
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\ReporteInvestigador.dll
 C:\Users\Usuario de red\Documents\Repos\WebSIAU\WebSIAU\obj\Debug\ReporteInvestigador.pdb
