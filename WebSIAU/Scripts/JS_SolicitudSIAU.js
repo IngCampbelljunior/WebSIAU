@@ -9,9 +9,7 @@
     var numIDSolicita = $("#numIDSolicita").val();
     var expedicionIDSolicita = $("#expedicionIDSolicita").val();
     var parentesco = $("#parentesco").val();
-    var tipoIDPaciente = $("#tipoIDPaciente").val();
     var numIDPaciente = $("#numIDPaciente").val();
-    var expedicionIDPaciente = $("#expedicionIDPaciente").val();
     var telefono = $("#telefono").val();
     var fechaIngreso = $("#fechaIngreso").val();
     var fechaEgreso = $("#fechaEgreso").val();
@@ -27,10 +25,10 @@
     var fechaEntrega = $("#fechaEntrega").val();
 
     
-    //fecha_solicitud,nombre1_solicita,nombre2_solicita,apellido1_solicita,apellido2_solicita,tipo_doc_solicita,num_doc_solicta,exp_doc_solicita,parentesco_solicita,tel_paciente,email_paciente,caso,empresa,hist_clinica,imagen_diag,lectura_rx,laboratorio,certificado,furips,num_folio,fecha_hora_entrega,estado_solicitud
-    var parametros = { fechSolic: fechaSolicitud, nom1Solic: nombre1Solicita, nom2Solic: nombre2Solicita, apell1Solic: apellido1Solicita, apell2Solic: apellido2Solicita, tipoIDSolic: tipoIDSolicita, numIDSolic: numIDSolicita, expIDSolic: expedicionIDSolicita, parentesco: parentesco, tipoIDPac: tipoIDPaciente, numIDPac: numIDPaciente, expIDPac: expedicionIDPaciente, telefono: telefono, fecIngreso: fechaIngreso, fecEgreso: fechaEgreso, correo: correo, numCaso: numCaso, histClinica: histClinica, imagenesDx: imagenesDx, lecturaRx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, numFolio: numFolio, fechaEntrega: fechaEntrega }
+    //                  fecha_solicitud,                nombre1_solicita,                  nombre2_solicita,                  apellido1_solicita,                    apellido2_solicita,                    tipo_doc_solicita,                 num_doc_solicta,                exp_doc_solicita,                       parentesco_solicita,             NoIdentificacion,                tel_paciente,           email_paciente,         fechaIngreso,               fechaEgreso,              caso           hist_clinica,              imagen_diag,             lectura_rx,            laboratorio,              certificado,              furips,         num_folio,           fecha_hora_entrega, estado_solicitud
+    var parametros = { fecha_solicitud: fechaSolicitud, nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, email_paciente: correo, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, caso: numCaso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }
 
-    $.post("DatosSolicitud", { fechSolic: fechaSolicitud, nom1Solic: nombre1Solicita, nom2Solic: nombre2Solicita, apell1Solic: apellido1Solicita, apell2Solic: apellido2Solicita, tipoIDSolic: tipoIDSolicita, numIDSolic: numIDSolicita, expIDSolic: expedicionIDSolicita, parentesco: parentesco, tipoIDPac: tipoIDPaciente, numIDPac: numIDPaciente, expIDPac: expedicionIDPaciente, telefono: telefono, fecIngreso: fechaIngreso, fecEgreso: fechaEgreso, correo: correo, numCaso: numCaso, histClinica: histClinica, imagenesDx: imagenesDx, lecturaRx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, numFolio: numFolio, fechaEntrega: fechaEntrega }, function (result) {
+    $.post("DatosSolicitud", { fecha_solicitud: fechaSolicitud, nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, email_paciente: correo, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, caso: numCaso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }, function (result) {
 
         var msg = result;
         console.log(result);

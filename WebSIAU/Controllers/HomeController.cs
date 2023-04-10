@@ -131,31 +131,31 @@ namespace WebSIAU.Controllers
             var sql = "Insert_solicitudDocSiau";
 
             List<Parametro> param = new List<Parametro>();
-            param.AddParametro("fechSolic", fecha_solicitud);
-            param.AddParametro("Empresa", CodEmpre);
-            param.AddParametro("nom1Solic", nombre1_solicita);
-            param.AddParametro("nom2Solic", nombre2_solicita);
-            param.AddParametro("apell1Solic", apellido1_solicita);
-            param.AddParametro("apell2Solic", apellido2_solicita);
-            param.AddParametro("tipoIDSolic", tipo_doc_solicita);
-            param.AddParametro("numIDSolic", num_doc_solicta);
-            param.AddParametro("expIDSolic", exp_doc_solicita);
-            param.AddParametro("parentesco", parentesco_solicita);
-            param.AddParametro("idPaciente", NoIdentificacion);
-            param.AddParametro("telefono", tel_paciente);
-            param.AddParametro("correo", email_paciente);
-            param.AddParametro("nocaso", Convert.ToDecimal(caso));
-            param.AddParametro("fecIngreso", fechaIngreso);
-            param.AddParametro("fecEgreso", fechaEgreso);
-            param.AddParametro("histClinica", hist_clinica);
-            param.AddParametro("imagenesDx", imagen_diag);
-            param.AddParametro("lecturaRx", lectura_rx);
+            param.AddParametro("fecha_solicitud", fecha_solicitud);
+            param.AddParametro("CodEmpre", CodEmpre);
+            param.AddParametro("nombre1_solicita", nombre1_solicita);
+            param.AddParametro("nombre2_solicita", nombre2_solicita);
+            param.AddParametro("apellido1_solicita", apellido1_solicita);
+            param.AddParametro("apellido2_solicita", apellido2_solicita);
+            param.AddParametro("tipo_doc_solicita", tipo_doc_solicita);
+            param.AddParametro("num_doc_solicta", num_doc_solicta);
+            param.AddParametro("exp_doc_solicita", exp_doc_solicita);
+            param.AddParametro("parentesco_solicita", parentesco_solicita);
+            param.AddParametro("NoIdentificacion", NoIdentificacion);
+            param.AddParametro("tel_paciente", tel_paciente);
+            param.AddParametro("email_paciente", email_paciente);
+            param.AddParametro("caso", Convert.ToDecimal(caso));
+            param.AddParametro("fechaIngreso", fechaIngreso);
+            param.AddParametro("fechaEgreso", fechaEgreso);
+            param.AddParametro("hist_clinica", hist_clinica);
+            param.AddParametro("imagen_diag", imagen_diag);
+            param.AddParametro("lectura_rx", lectura_rx);
             param.AddParametro("laboratorio", laboratorio);
             param.AddParametro("certificado", certificado);
             param.AddParametro("furips", furips);
-            param.AddParametro("numFolio", num_folio);
-            param.AddParametro("fechaEntrega", fecha_hora_entrega);
-            param.AddParametro("estadoSolicitud", estado_solicitud);
+            param.AddParametro("num_folio", num_folio);
+            param.AddParametro("fecha_hora_entrega", fecha_hora_entrega);
+            param.AddParametro("estado_solicitud", estado_solicitud);
 
             if (!SqlDbMysql.EjecutarComando(sql, true, param.ToArray()))
             {
@@ -165,55 +165,7 @@ namespace WebSIAU.Controllers
             resultado = "OK";
             return Json(JsonConvert.SerializeObject(resultado), JsonRequestBehavior.AllowGet);
         }
-
-        //[HttpPost]
-        //public ActionResult GetSolicitudDocSiau()
-        //{
-
-        //    var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
-        //    var codigoEmp = (string)Session["CodEmpresa"].ToString();
-        //    List<solicitud_doc_siau> result = dataBase.GetSolicitudDocSiau(codigoEmp);
-        //    return Json(JsonConvert.SerializeObject(result), JsonRequestBehavior.AllowGet);
-        //}
-
-        //[HttpPost]
-        //public ActionResult RegistrarSolicitudSiau(string nocaso, string nodocumento, string tipodocumento, string ciudadexp, string nombres, string apellidos, Fecha fechaing, string horaing, Fecha fechaacc, string horaacci, string diagnos, string relato, string investigador, string aseguradora)
-        //{
-        //    ObtenerConexion();
-        //    string Empresa = (string)Session["CodEmpresa"];
-        //    var result = string.Empty;
-        //    var dataDb = new ConsultasEsculapioDB(SqlDbMysql);
-        //    var sql = "Insert_solicitudDocSiau";
-
-        //    List<Parametro> param = new List<Parametro>();
-        //    param.AddParametro("Empresa", Empresa);
-        //    param.AddParametro("nocaso", Convert.ToDecimal(nocaso));
-        //    param.AddParametro("nodocumento", nodocumento);
-        //    param.AddParametro("tipodocumento", tipodocumento);
-        //    param.AddParametro("ciudadexp", ciudadexp);
-        //    param.AddParametro("nombres", nombres);
-        //    param.AddParametro("apellidos", apellidos);
-        //    param.AddParametro("fechaing", fechaing);
-        //    param.AddParametro("horaing", horaing);
-        //    param.AddParametro("fechaacc", fechaacc);
-        //    param.AddParametro("horaacci", horaacci);
-        //    param.AddParametro("diagnos", diagnos);
-        //    param.AddParametro("relato", relato);
-        //    param.AddParametro("investigador", investigador);
-        //    param.AddParametro("aseguradora", aseguradora);
-
-        //    if (!SqlDbMysql.EjecutarComando(sql, true, param.ToArray()))
-        //    {
-        //        throw SqlDbMysql.UltimaExcepcion;
-        //    }
-
-        //    DateTime FechaHoy = DateTime.Now.Date;
-        //    //GeneraFormato(Empresa, nocaso, FechaHoy, Usuario);
-
-
-        //    result = "OK";
-        //    return Json(JsonConvert.SerializeObject(result), JsonRequestBehavior.AllowGet);
-        //}
+  
         [HttpPost]
         public JsonResult ViewFormato(string NoCuenta)
         {
