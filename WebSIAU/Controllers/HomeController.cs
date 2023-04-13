@@ -102,14 +102,14 @@ namespace WebSIAU.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult LovDatosSolicitud()
-        //{
-        //    var codigoEmp = (string)Session["CodEmpresa"];
-        //    var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
-        //    List<DatosInvestigadores> lstInvestig = dataBase.GetInvestigadores(codigoEmp);
-        //    return Json(JsonConvert.SerializeObject(lstInvestig), JsonRequestBehavior.AllowGet);
-        //}
+        [HttpPost]
+        public ActionResult LovDatosSolicitud()
+        {
+            var codigoEmp = (string)Session["CodEmpresa"];
+            var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
+            List<solicitud_doc_siau> lstInvestig = dataBase.GetSolicitudDocSiau(codigoEmp);
+            return Json(JsonConvert.SerializeObject(lstInvestig), JsonRequestBehavior.AllowGet);
+        }
 
         //[HttpPost]
         //public ActionResult GetDatosPaciente(string criterio)
@@ -131,8 +131,8 @@ namespace WebSIAU.Controllers
             var sql = "Insert_solicitudDocSiau";
 
             List<Parametro> param = new List<Parametro>();
-            param.AddParametro("fecha_solicitud", fecha_solicitud);
             param.AddParametro("CodEmpre", CodEmpre);
+            param.AddParametro("fecha_solicitud", fecha_solicitud);
             param.AddParametro("nombre1_solicita", nombre1_solicita);
             param.AddParametro("nombre2_solicita", nombre2_solicita);
             param.AddParametro("apellido1_solicita", apellido1_solicita);

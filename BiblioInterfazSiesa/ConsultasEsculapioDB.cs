@@ -86,25 +86,24 @@ namespace LiloSoft.Siesa.Interfaz
         }
 
         //Para SIAU
-        //public List<solicitud_doc_siau> GetSolicitudDocSiau(string Empresa, decimal NoCaso, string Usuario)
-        //{
-        //    string sql = @"SELECT i.empresa, a.nombre_entidad, i.Fecha_elaboracion, CONCAT_WS(' ',i.Nombres,i.Apellidos) AS paciente, i.TipoDocumento, 
-        //                    i.NoDocumento, i.CiudadExp, i.Caso, i.FechaIngreso, i.HoraIngreso, i.Fecha_acc, i.Hora_acc, i.Diagnostico, i.Relato, CONCAT_WS(' ', v.Nombres, v.Apellidos) AS investigadores,
-        //                    v.NoDocumento Doc_Investigador, v.AgenciaInvest, u.FirmaDigital FirmaUsuario
-        //                    FROM investigador_reporte i
-        //                    INNER JOIN investigadores v ON i.empresa = v.empresa AND i.Doc_Investigador = v.NoDocumento
-        //                    INNER JOIN entidades a ON i.empresa=a.empresa and i.Aseguradora = a.nitentidad
-        //                    INNER JOIN usuarios_acreditador u ON i.empresa=u.empresa AND u.usuario=:Usuario
-        //                    WHERE i.empresa =:Empresa AND i.caso =:NoCaso";
+        public List<solicitud_doc_siau> GetSolicitudDocSiau(string Empresa)
+        {
+            string sql = @"SELECT empresa, fecha_solicitud, nombre1_solicita, nombre2_solicita,
+                            apellido1_solicita, apellido2_solicita, tipo_doc_solicita,
+                            num_doc_solicta, exp_doc_solicita, parentesco_solicita, NoIdentificacion,
+                            tel_paciente, email_paciente, caso, fechaIngreso, fechaEgreso,
+                            hist_clinica, imagen_diag, lectura_rx, laboratorio, certificado,
+                            furips, num_folio, fecha_hora_entrega, estado_solicitud 
+                            FROM solicitud_doc_siau s WHERE s.empresa=:Empresa";
 
-        //    List<Parametro> lstPars = new List<Parametro>();
-        //    lstPars.AddParametro("empresa", Empresa);
-        //    lstPars.AddParametro("NoCaso", NoCaso);
-        //    lstPars.AddParametro("Usuario", Usuario);
+            List<Parametro> lstPars = new List<Parametro>();
+            lstPars.AddParametro("empresa", Empresa);
+            //lstPars.AddParametro("NoCaso", NoCaso);
+            //lstPars.AddParametro("Usuario", Usuario);
 
-        //    return base.ExecuteGetLista<solicitud_doc_siau>(sql, false, lstPars.ToArray());
+            return base.ExecuteGetLista<solicitud_doc_siau>(sql, false, lstPars.ToArray());
 
-        //}
+        }
 
         #endregion
 
@@ -390,6 +389,7 @@ namespace LiloSoft.Siesa.Interfaz
 
     public class solicitud_doc_siau
     {
+        public string empresa { get; set; }
         public Fecha fecha_solicitud { get; set; }
         public string nombre1_solicita { get; set; }
         public string nombre2_solicita { get; set; }
@@ -403,7 +403,6 @@ namespace LiloSoft.Siesa.Interfaz
         public string tel_paciente { get; set; }
         public string email_paciente { get; set; }
         public string caso { get; set; }
-        public string empresa { get; set; }
         public Fecha fechaIngreso { get; set; }
         public Fecha fechaEgreso { get; set; }
         public string hist_clinica { get; set; }

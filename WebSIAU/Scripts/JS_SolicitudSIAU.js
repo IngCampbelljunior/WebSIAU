@@ -45,6 +45,10 @@
 
 }
 
+//Esta función es llamada desde el input "parentesco" (linea 1256 de la vista DatosSolicitud.cshtml) y 
+//copia los valores de los inputs de los datos del solicitante en los input de los datos del paciente siempre y cuando
+//se elija el valor "paciente" del datalist parentesco (linea 1256 de la vista DatosSolicitud.cshtml).
+//Si se cambia el valor del datalist, los inputs de los datos del paciente se limpian
 function PasarValor() {
     var paciente = $("#parentesco").val();
     if (paciente == "paciente") {
@@ -68,6 +72,9 @@ function PasarValor() {
     }
 }
 
+//Esta función es llamada desde el evento onclick de los inputs soportes solicitados (checkbox) y
+//Valida si los checkbox de los soportes solicitados han sido activados y almacena el valor en los
+//inputos ocultos lineas 1409 a la 1459 de la vista DatosSolicitud.cshtml
 function validaDOC(checkbox) {
     var checkboxes = document.getElementsByName('checkDOC')
     checkboxes.forEach((item) => {
