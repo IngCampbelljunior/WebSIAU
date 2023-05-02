@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReporteInvestigador</RootNamespace>
     <AssemblyName>ReporteInvestigador</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>false</Use64BitIISExpress>
@@ -221,6 +221,7 @@
     <Content Include="Content\MyStyleFormRegistrarInvestigador.css" />
     <Content Include="Content\MyStyleFormConsulFecha.css" />
     <Content Include="Content\StyleSimple.css" />
+    <Content Include="Content\Styles\MyStyle.css" />
     <Content Include="Content\Styles\style3.css" />
     <Content Include="Content\Styles\style4.css" />
     <Content Include="Content\Styles\style5.css" />

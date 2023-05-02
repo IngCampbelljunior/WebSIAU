@@ -122,8 +122,9 @@ namespace WebSIAU.Controllers
         //}
 
         [HttpPost]
-        public ActionResult DatosSolicitud(Fecha fecha_solicitud, string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string NoIdentificacion, string tel_paciente, string email_paciente, string caso, Fecha fechaIngreso, Fecha fechaEgreso, string hist_clinica, string imagen_diag, string lectura_rx, string laboratorio, string certificado, byte furips, string num_folio, Fecha fecha_hora_entrega, string estado_solicitud)
+        public ActionResult DatosSolicitud(string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string NoIdentificacion, string tel_paciente, string email_paciente, string caso, Fecha fechaIngreso, Fecha fechaEgreso, string hist_clinica, string imagen_diag, string lectura_rx, string laboratorio, string certificado, string furips, string num_folio, Fecha fecha_hora_entrega)
         {
+
             ObtenerConexion();
             string CodEmpre = (string)Session["CodEmpresa"];
             var resultado = string.Empty;
@@ -132,7 +133,6 @@ namespace WebSIAU.Controllers
 
             List<Parametro> param = new List<Parametro>();
             param.AddParametro("CodEmpre", CodEmpre);
-            param.AddParametro("fecha_solicitud", fecha_solicitud);
             param.AddParametro("nombre1_solicita", nombre1_solicita);
             param.AddParametro("nombre2_solicita", nombre2_solicita);
             param.AddParametro("apellido1_solicita", apellido1_solicita);
@@ -155,7 +155,6 @@ namespace WebSIAU.Controllers
             param.AddParametro("furips", furips);
             param.AddParametro("num_folio", num_folio);
             param.AddParametro("fecha_hora_entrega", fecha_hora_entrega);
-            param.AddParametro("estado_solicitud", estado_solicitud);
 
             if (!SqlDbMysql.EjecutarComando(sql, true, param.ToArray()))
             {

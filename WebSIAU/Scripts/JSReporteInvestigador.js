@@ -46,6 +46,7 @@
         var selectedValue = $(this).val();
         $("#hfaseguradora").val(selectedValue);
         $("#btnFirma").attr("disabled", false);
+
     });
 
     $("#agencia").change(function () {

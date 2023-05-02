@@ -78,7 +78,12 @@ namespace LiloSoft.Siesa.Interfaz
         public List<Entidades> GetAseguradoras(string Empresa)
 
         {
-            string sql = "SELECT DISTINCT a.nitentidad, a.nombre_entidad FROM entidades a INNER JOIN convenios b ON a.empresa=b.empresa AND a.nitentidad=b.nitentidad AND b.fec_fin_vigencia>=CURRENT_DATE() AND b.estado='A' AND b.Soat='S' WHERE a.empresa=:Empresa AND a.estado='A' ORDER BY a.nombre_entidad";
+            string sql = "SELECT DISTINCT a.nitentidad, a.nombre_entidad "+
+                "FROM entidades a "+
+                "INNER JOIN convenios b ON a.empresa=b.empresa AND a.nitentidad=b.nitentidad AND "+
+                "b.fec_fin_vigencia>=CURRENT_DATE() AND b.estado='A' AND b.Soat='S' "+
+                "WHERE a.empresa=:Empresa AND a.estado='A' "+
+                "ORDER BY a.nombre_entidad";
             List<Parametro> lstPars = new List<Parametro>();
             lstPars.AddParametro("Empresa", Empresa);
 
