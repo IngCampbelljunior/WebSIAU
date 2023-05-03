@@ -1,7 +1,6 @@
-﻿////const { refresh } = require("less");
-
+﻿
 $(document).ready(function () {
-    alert("ingresa");
+    
     $('#btnSave').click(function (e) {
         e.preventDefault();
         alert("Botón");
@@ -10,7 +9,24 @@ $(document).ready(function () {
     });
 });
 
+// Código (linea 12 a la 27) para establecer fecha actual en el input fechaSolicitud de la vista DatosSolicitud.cshtml
+// Método que recibe un elemento input date y un objeto date
+function chargeDateInputDate(elem, dateObject = new Date()) {
+    var year = dateObject.getFullYear();
+    var month = dateObject.getMonth() + 1;
+    var month = month > 9 ? month : "0" + month;
+    var day = dateObject.getDate() > 9 ? dateObject.getDate() : "0" + dateObject.getDate();
+    var dateFormat = year + "-" + month + "-" + day;
+    elem.value = dateFormat;
+}
+// Creamos un objeto date con la fecha actual
+var fecha = new Date();
+// Obtenemos el elemento input time
+var inputDate = document.getElementById("fechaSolicitud");
+// Llamamos al método para que cargue la fecha
+chargeDateInputDate(inputDate, fecha);
 
+//Función para almacenar en la BD los datos de solicitud
 function GuardarDatosSolicitud() {
    
 
@@ -27,6 +43,7 @@ function GuardarDatosSolicitud() {
     var telefono = $("#telefono").val();
     var fechaIngreso = $("#fechaIngreso").val();
     var fechaEgreso = $("#fechaEgreso").val();
+    var motivoSolicitud = $("#motivo").val();
     var correo = $("#correo").val();
     var numCaso = $("#numCaso").val();
     var histClinica = $("#histc").val();
@@ -39,10 +56,9 @@ function GuardarDatosSolicitud() {
     var fechaEntrega = $("#fechaEntrega").val();
     alert("Voy a grabar")
     
-    //                  fecha_solicitud,                nombre1_solicita,                  nombre2_solicita,                  apellido1_solicita,                    apellido2_solicita,                    tipo_doc_solicita,                 num_doc_solicta,                exp_doc_solicita,                       parentesco_solicita,             NoIdentificacion,                tel_paciente,           email_paciente,         fechaIngreso,               fechaEgreso,              caso           hist_clinica,              imagen_diag,             lectura_rx,            laboratorio,              certificado,              furips,         num_folio,           fecha_hora_entrega, estado_solicitud
-    var parametros = { fecha_solicitud: fechaSolicitud, nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, email_paciente: correo, caso: numCaso, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, caso: numCaso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }
+    var parametros = { fecha_solicitud: fechaSolicitud, nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, motivo_solicitud: motivoSolicitud, email_paciente: correo, caso: numCaso, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, caso: numCaso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }
 
-    $.post("DatosSolicitud", { nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, email_paciente: correo, caso: numCaso, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }, function (result) {
+    $.post("DatosSolicitud", { nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, motivo_solicitud: motivoSolicitud, email_paciente: correo, caso: numCaso, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }, function (result) {
 
         var msg = result;
         console.log(result);
@@ -75,6 +91,7 @@ function PasarValor() {
         document.getElementById("numIDPaciente").value = document.getElementById("numIDSolicita").value;
         document.getElementById("expedicionIDPaciente").value = document.getElementById("expedicionIDSolicita").value;
         document.getElementById("telefono").focus();
+        //GetDatosPacientes(paciente);
     }
     else {
         document.getElementById("nombre1Paciente").value = "";

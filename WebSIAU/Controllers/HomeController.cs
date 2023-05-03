@@ -121,8 +121,9 @@ namespace WebSIAU.Controllers
         //    return Json(JsonConvert.SerializeObject(result), JsonRequestBehavior.AllowGet);
         //}
 
+
         [HttpPost]
-        public ActionResult DatosSolicitud(string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string NoIdentificacion, string tel_paciente, string email_paciente, string caso, Fecha fechaIngreso, Fecha fechaEgreso, string hist_clinica, string imagen_diag, string lectura_rx, string laboratorio, string certificado, string furips, string num_folio, Fecha fecha_hora_entrega)
+        public ActionResult DatosSolicitud(string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string NoIdentificacion, string tel_paciente, string motivo_solicitud, string email_paciente, string caso, Fecha fechaIngreso, Fecha fechaEgreso, string hist_clinica, string imagen_diag, string lectura_rx, string laboratorio, string certificado, string furips, string num_folio, Fecha fecha_hora_entrega)
         {
 
             ObtenerConexion();
@@ -143,6 +144,7 @@ namespace WebSIAU.Controllers
             param.AddParametro("parentesco_solicita", parentesco_solicita);
             param.AddParametro("NoIdentificacion", NoIdentificacion);
             param.AddParametro("tel_paciente", tel_paciente);
+            param.AddParametro("motivo_solicitud", motivo_solicitud);
             param.AddParametro("email_paciente", email_paciente);
             param.AddParametro("caso", Convert.ToDecimal(caso));
             param.AddParametro("fechaIngreso", fechaIngreso);
