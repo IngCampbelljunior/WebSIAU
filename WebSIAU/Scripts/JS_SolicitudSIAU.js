@@ -1,12 +1,38 @@
 ﻿
 $(document).ready(function () {
-    
+
+    //evento del botón Guardar de la vista DatosSolicitud
     $('#btnSave').click(function (e) {
         e.preventDefault();
         alert("Botón");
         GuardarDatosSolicitud();
 
     });
+
+    //evento del botón consultar números de casos
+    $('#btnBuscar').click(function (e) {
+
+        event.preventDefault(e);
+
+        $("#modalSign").modal("show");
+
+        var criterio = $("#numIDPaciente").val();
+
+        if (criterio.length == 0) {
+            alert("Digitar criterio de búsqueda.");
+            return;
+        }
+        
+        GetCasosPaciente(criterio);
+        
+    });
+
+    $("#btnBuscarInf").click(function () {
+
+        GetConsultarSolicitudes('C30');
+
+    });
+    
 });
 
 // Código (linea 12 a la 27) para establecer fecha actual en el input fechaSolicitud de la vista DatosSolicitud.cshtml
@@ -45,6 +71,7 @@ function GuardarDatosSolicitud() {
     var fechaEgreso = $("#fechaEgreso").val();
     var motivoSolicitud = $("#motivo").val();
     var correo = $("#correo").val();
+    var envioalcorreo = $("#envioalcorreo").val();
     var numCaso = $("#numCaso").val();
     var histClinica = $("#histc").val();
     var imagenesDx = $("#rayox").val();
@@ -56,9 +83,9 @@ function GuardarDatosSolicitud() {
     var fechaEntrega = $("#fechaEntrega").val();
     alert("Voy a grabar")
     
-    var parametros = { fecha_solicitud: fechaSolicitud, nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, motivo_solicitud: motivoSolicitud, email_paciente: correo, caso: numCaso, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, caso: numCaso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }
+    var parametros = { fecha_solicitud: fechaSolicitud, nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, motivo_solicitud: motivoSolicitud, email_paciente: correo, envioalcorreo: envioalcorreo, caso: numCaso, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, caso: numCaso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }
 
-    $.post("DatosSolicitud", { nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, motivo_solicitud: motivoSolicitud, email_paciente: correo, caso: numCaso, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }, function (result) {
+    $.post("DatosSolicitud", { nombre1_solicita: nombre1Solicita, nombre2_solicita: nombre2Solicita, apellido1_solicita: apellido1Solicita, apellido2_solicita: apellido2Solicita, tipo_doc_solicita: tipoIDSolicita, num_doc_solicta: numIDSolicita, exp_doc_solicita: expedicionIDSolicita, parentesco_solicita: parentesco, NoIdentificacion: numIDPaciente, tel_paciente: telefono, motivo_solicitud: motivoSolicitud, email_paciente: correo, envioalcorreo: envioalcorreo, caso: numCaso, fechaIngreso: fechaIngreso, fechaEgreso: fechaEgreso, hist_clinica: histClinica, imagen_diag: imagenesDx, lectura_rx: lecturaRx, laboratorio: laboratorio, certificado: certificado, furips: furips, num_folio: numFolio, fecha_hora_entrega: fechaEntrega }, function (result) {
 
         var msg = result;
         console.log(result);
@@ -111,15 +138,107 @@ function validaDOC(checkbox) {
     var checkboxes = document.getElementsByName('checkDOC')
     checkboxes.forEach((item) => {
         //if (item !== checkbox) item.checked = false;
-        if (item == checkbox && item.value == 'hc') document.getElementById("histc").value = item.value;//$("#histc").val(item.value);
-        if (item == checkbox && item.value == 'rx') document.getElementById("rayox").value = item.value;//$("rayox").val(item.value);
-        if (item == checkbox && item.value == 'lr') document.getElementById("lect").value = item.value;//$("lect").val(item.value);
-        if (item == checkbox && item.value == 'lb') document.getElementById("labs").value = item.value;//$("labs").val(item.value);
-        if (item == checkbox && item.value == 'ce') document.getElementById("cert").value = item.value;//$("cert").val(item.value);
-        if (item == checkbox && item.value == 'fu') document.getElementById("furips").value = item.value;//$("furips").val(item.value);
+        if (item == checkbox && item.value == 'si') document.getElementById("envioalcorreo").value = item.value;
+        if (item == checkbox && item.value == 'hc') document.getElementById("histc").value = item.value;
+        if (item == checkbox && item.value == 'rx') document.getElementById("rayox").value = item.value;
+        if (item == checkbox && item.value == 'lr') document.getElementById("lect").value = item.value;
+        if (item == checkbox && item.value == 'lb') document.getElementById("labs").value = item.value;
+        if (item == checkbox && item.value == 'ce') document.getElementById("cert").value = item.value;
+        if (item == checkbox && item.value == 'fu') document.getElementById("furips").value = item.value;
         
     });
 }
+
+//Función para mostrar los números de casos en los servicios que 
+//atendieron al paciente según su número de cédula
+function GetCasosPaciente(criterio) {
+
+    var uriruta = "GetCasosPaciente";
+
+    $.ajax({
+        type: "POST", //GET
+        url: uriruta,
+        content: "application/json; charset=utf-8",
+        dataType: "json",
+        // De la siguiente manera indicamos que del div tome los input.
+        data: { "criterio": criterio },
+
+        success: function (data) {
+            //alert(data);
+
+            var msg = data.d;
+            console.log(data);
+            //var res = JSON.parse(data);
+
+            if (msg !== "") {
+
+
+                var LstCampos = "Nocuenta(T)(L)(N)(G)(N)[5][15],";
+                LstCampos += "NoAdmision(T)(L)(N)(G)(N)[5][15],";
+                LstCampos += "fechaIngreso(T)(L)(N)(G)(N)[10][25],";
+                LstCampos += "horaingreso(T)(L)(N)(G)(N)[5][15],";
+                LstCampos += "Servicio(T)(L)(N)(G)(N)[10][25],";
+                LstCampos += "estado(T)(L)(N)(G)(N)[10][25],";
+                LstCampos += "fechaegreso(T)(L)(N)(G)(N)[10][25],";
+                LstCampos += "horaEgreso(T)(L)(N)(G)(N)[10][25],";
+                DesingTabla('gvPrescripcion', LstCampos, data, true, false, false, false);
+
+            }
+            else {
+                alert("Datos en Blanco");
+            }
+
+        },
+        error: function (xhr, status, error) {
+            alert("ERROR: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+        }
+    });
+
+
+}
+
+//Función para mostrar las solicitudes pendientes
+
+function GetConsultarSolicitudes(empresa) {
+
+    var UriRuta = "GetDatosPaciente";
+
+    $.ajax({
+        type: "POST", //GET
+        url: UriRuta,
+        content: "application/json; charset=utf-8",
+        dataType: "json",
+        // De la siguiente manera indicamos que del div tome los input.
+        data: { "empresa": empresa}, //JSON.stringify(parametros),
+        success: function (data) {
+
+            var msg = data.d;
+            console.log(data);
+
+            if (msg !== "") {
+
+
+                var LstCampos = "TipoDocumento(T)(L)(N)(G)(N)[10][25],";
+                LstCampos += "NoDocumento(T)(L)(N)(G)(N)[5][5],";
+                LstCampos += "Nombre1(T)(L)(N)(G)(N)[10][25],";
+                LstCampos += "Nombre2(T)(L)(N)(G)(N)[10][25],";
+                LstCampos += "Apellido1(T)(L)(N)(G)(N)[10][25],";
+                LstCampos += "Apellido2(T)(L)(N)(G)(N)[10][25],";
+                LstCampos += "fecha_solicitud(T)(L)(N)(G)(N)[10][25],";
+                DesingTabla('gvPrescripcion', LstCampos, data, true, false, false, false);
+
+
+            }
+            else {
+                alert("Datos en Blanco");
+            }
+        },
+        error: function (xhr, status, error) {
+            alert("ERROR: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+        }
+    });
+}
+
 
 //***** FUNCION REFRESCAR O ACTUALIZAR LA PAGINA
 function refresh() {

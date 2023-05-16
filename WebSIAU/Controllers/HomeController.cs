@@ -59,7 +59,7 @@ namespace WebSIAU.Controllers
             }
             else
             {
-                return RedirectToAction("DatosSolicitud");
+                return RedirectToAction("ConsultarSolicitudes");
             }
         }
 
@@ -84,7 +84,7 @@ namespace WebSIAU.Controllers
             return View();
         }
 
-        public ActionResult ConsultarFecha()
+        public ActionResult ConsultarSolicitudes()
         {
             var codigoEmp = (string)Session["CodEmpresa"];
             var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
@@ -102,28 +102,47 @@ namespace WebSIAU.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult LovDatosSolicitud()
-        {
-            var codigoEmp = (string)Session["CodEmpresa"];
-            var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
-            List<solicitud_doc_siau> lstInvestig = dataBase.GetSolicitudDocSiau(codigoEmp);
-            return Json(JsonConvert.SerializeObject(lstInvestig), JsonRequestBehavior.AllowGet);
-        }
-
         //[HttpPost]
-        //public ActionResult GetDatosPaciente(string criterio)
+        //public ActionResult LovDatosSolicitud()
         //{
-
+        //    var codigoEmp = (string)Session["CodEmpresa"];
         //    var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
-        //    var codigoEmp = (string)Session["CodEmpresa"].ToString();
-        //    List<DatosPacientes> result = dataBase.GetDatosPacientes(codigoEmp, Convert.ToDecimal(criterio));
-        //    return Json(JsonConvert.SerializeObject(result), JsonRequestBehavior.AllowGet);
+        //    List<solicitud_doc_siau> lstInvestig = dataBase.GetSolicitudDocSiau(codigoEmp);
+        //    return Json(JsonConvert.SerializeObject(lstInvestig), JsonRequestBehavior.AllowGet);
         //}
 
 
         [HttpPost]
-        public ActionResult DatosSolicitud(string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string NoIdentificacion, string tel_paciente, string motivo_solicitud, string email_paciente, string caso, Fecha fechaIngreso, Fecha fechaEgreso, string hist_clinica, string imagen_diag, string lectura_rx, string laboratorio, string certificado, string furips, string num_folio, Fecha fecha_hora_entrega)
+        public ActionResult GetDatosPaciente(string CodEmpresa)
+        {
+
+            List<SelectListItem> li = new List<SelectListItem>();
+            var codigoEmp = (string)Session["CodEmpresa"];
+            var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
+            List<ConsultaSolicitudPendiente> result = dataBase.GetSolicitudPendiente(codigoEmp);
+
+            List<ConsultaSolicitudPendiente> model = new List<ConsultaSolicitudPendiente>();
+            foreach (ConsultaSolicitudPendiente i in result)
+            {
+                ConsultaSolicitudPendiente docEVM = new ConsultaSolicitudPendiente()
+                {
+                    TipoDocumento = i.TipoDocumento,
+                    NoDocumento = i.NoDocumento,
+                    Nombre1 = i.Nombre1,
+                    Nombre2 = i.Nombre2,
+                    Apellido1 = i.Apellido1,
+                    Apellido2 = i.Apellido2,
+                    fecha_solicitud = i.fecha_solicitud
+
+                };
+                model.Add(docEVM);
+            }
+            return Json(JsonConvert.SerializeObject(model), JsonRequestBehavior.AllowGet);
+            //return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult DatosSolicitud(string nombre1_solicita, string nombre2_solicita, string apellido1_solicita, string apellido2_solicita, string tipo_doc_solicita, string num_doc_solicta, string exp_doc_solicita, string parentesco_solicita, string NoIdentificacion, string tel_paciente, string motivo_solicitud, string email_paciente, string caso, string envioalcorreo, Fecha fechaIngreso, Fecha fechaEgreso, string hist_clinica, string imagen_diag, string lectura_rx, string laboratorio, string certificado, string furips, string num_folio, Fecha fecha_hora_entrega)
         {
 
             ObtenerConexion();
@@ -146,6 +165,7 @@ namespace WebSIAU.Controllers
             param.AddParametro("tel_paciente", tel_paciente);
             param.AddParametro("motivo_solicitud", motivo_solicitud);
             param.AddParametro("email_paciente", email_paciente);
+            param.AddParametro("envioalcorreo", envioalcorreo);
             param.AddParametro("caso", Convert.ToDecimal(caso));
             param.AddParametro("fechaIngreso", fechaIngreso);
             param.AddParametro("fechaEgreso", fechaEgreso);
@@ -166,7 +186,39 @@ namespace WebSIAU.Controllers
             resultado = "OK";
             return Json(JsonConvert.SerializeObject(resultado), JsonRequestBehavior.AllowGet);
         }
-  
+
+        [HttpPost]
+        public JsonResult GetCasosPaciente(string criterio)
+        {
+           
+            List<SelectListItem> li = new List<SelectListItem>();
+            var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
+            var codigoEmp = (string)Session["CodEmpresa"];
+
+            List<ConsultaCasosPaciente> result = dataBase.GetCasosPaciente(codigoEmp, criterio);
+
+            List<ConsultaCasosPaciente> model = new List<ConsultaCasosPaciente>();
+            foreach (ConsultaCasosPaciente i in result)
+            {
+                ConsultaCasosPaciente docEVM = new ConsultaCasosPaciente()
+                {
+                    Nocuenta = i.Nocuenta,
+                    NoAdmision = i.NoAdmision,
+                    fechaIngreso = i.fechaIngreso,
+                    horaingreso = i.horaingreso,
+                    Servicio = i.Servicio,
+                    estado = i.estado,
+                    fechaegreso = i.fechaegreso,
+                    horaEgreso = i.horaEgreso,
+                    empresa = i.empresa,
+                    estadoIng = i.estadoIng,
+
+                };
+                model.Add(docEVM);
+            }
+            return Json(JsonConvert.SerializeObject(model), JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public JsonResult ViewFormato(string NoCuenta)
         {
@@ -185,7 +237,7 @@ namespace WebSIAU.Controllers
             }
             return Json(bitToBase64, JsonRequestBehavior.AllowGet);
         }
-
+        
         //[HttpPost]
         //public ActionResult SaveImagenTemp(string datauri)
         //{
@@ -484,9 +536,6 @@ namespace WebSIAU.Controllers
             param.AddParametro("correoinves", correoinvest);
             param.AddParametro("agenciainves", agenciainvest);
             param.AddParametro("aseguradora", aseguradora);
-            //param.AddParametro("firmadigital", firmadigital);
-            //param.AddParametro("estado", estado);
-
 
             if (!SqlDbMysql.EjecutarComando(sql, true, param.ToArray()))
             {
@@ -501,7 +550,7 @@ namespace WebSIAU.Controllers
         public ActionResult Authorise(UsuariosModels user, FormCollection formcollection)
         {
             string CodigoEmp = Request.Form["hfCodigoEmp"].ToString();
-            //Get_UnaEmpresasWeb(CodigoEmp);
+
             GetEmpresaEsculapio(CodigoEmp.Substring(0, 2)); //"01"
             user.usuario = Request.Form["usuario"].ToString();
             user.PassWordUsu = Request.Form["PassWordUsu"].ToString();
@@ -516,9 +565,8 @@ namespace WebSIAU.Controllers
                 else if (ValidaUsuario(user.usuario, user.PassWordUsu))
                 {
 
-                    //CodigoEmp = Request.Form["#hfCodigoEmp"].ToString();
                     Session["userID"] = user.usuario;
-                    return RedirectToAction("DatosSolicitud");
+                    return RedirectToAction("ConsultarSolicitudes");
                 }
                 else
                 {

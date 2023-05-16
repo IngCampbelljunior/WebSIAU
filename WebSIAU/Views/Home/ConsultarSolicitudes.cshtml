@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SolicitudPendiente.Models.SolicitudPendienteModel>
+
+@{
+    ViewBag.Title = "Solicitudes Pendientes";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
+
+<div class="jumbotron">
+    <h2>Solicitudes Pendientes por Resolver</h2>
+
+</div>
+@using (Html.BeginForm())
+{
+    <div class="panel-body">
+        <fieldset>
+
+            <div class="form-actions ">
+                <button type="button" id="btnBuscarInf" class="btn btn-outline-success">Recargar</button>
+            </div>
+        </fieldset>
+    </div>
+
+    // Datatable de Lista de Eventos Adversos
+    <div id="gvPrescripcion">
+
+    </div>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link href="~/Extras/DataTable/select.dataTables.min.css" rel="stylesheet" />
+
+    @section Scripts {
+
+        <script src="~/Extras/DataTable/jquery.dataTables.min.js"></script>
+        <script src="~/Extras/DataTable/dataTables.select.min.js"></script>
+
+        <link href="~/Extras/DataTable/buttons.bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Extras/DataTable/buttons.dataTables.css" rel="stylesheet" />
+        <script src="~/Extras/DataTable/dataTables.buttons.min.js"></script>
+        <script src="~/Extras/DataTable/jszip.min.js"></script>
+        <script src="~/Extras/DataTable/pdfmake.min.js"></script>
+        <script src="~/Extras/DataTable/buttons.html5.min.js"></script>
+        <script id="btnImprimir" src="~/Extras/DataTable/buttons.print.min.js"></script>
+        <script src="~/Extras/DataTable/buttons.flash.min.js"></script>
+
+        <link href="~/Scripts/datepicker/css/datepicker3.css" rel="stylesheet" />
+        <script src="~/Scripts/datepicker/js/bootstrap-datepicker.js"></script>
+
+        <script src="~/Extras/Validaciones.js" type="text/javascript"></script>
+        <script src="~/Extras/Utilidades.js" type="text/javascript"></script>
+
+        <script src="~/Scripts/JS_SolicitudSIAU.js"></script>
+
+    }
+}
