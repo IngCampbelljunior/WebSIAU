@@ -9,12 +9,9 @@ $(document).ready(function () {
 
     });
 
+    
     //evento del botón consultar números de casos
     $('#btnBuscar').click(function (e) {
-
-        event.preventDefault(e);
-
-        $("#modalSign").modal("show");
 
         var criterio = $("#numIDPaciente").val();
 
@@ -22,16 +19,20 @@ $(document).ready(function () {
             alert("Digitar criterio de búsqueda.");
             return;
         }
-        
+
+        $("#modalSign").modal('show');
         GetCasosPaciente(criterio);
-        
+
     });
 
+    //evento del botón consultar solicitudes pendientes
     $("#btnBuscarInf").click(function () {
 
         GetConsultarSolicitudes('C30');
 
     });
+
+
     
 });
 
@@ -152,7 +153,7 @@ function validaDOC(checkbox) {
 //Función para mostrar los números de casos en los servicios que 
 //atendieron al paciente según su número de cédula
 function GetCasosPaciente(criterio) {
-
+    //alert('funcion buscar');
     var uriruta = "GetCasosPaciente";
 
     $.ajax({
@@ -162,35 +163,43 @@ function GetCasosPaciente(criterio) {
         dataType: "json",
         // De la siguiente manera indicamos que del div tome los input.
         data: { "criterio": criterio },
-
+        
         success: function (data) {
-            //alert(data);
 
-            var msg = data.d;
-            console.log(data);
-            //var res = JSON.parse(data);
-
-            if (msg !== "") {
-
-
-                var LstCampos = "Nocuenta(T)(L)(N)(G)(N)[5][15],";
-                LstCampos += "NoAdmision(T)(L)(N)(G)(N)[5][15],";
-                LstCampos += "fechaIngreso(T)(L)(N)(G)(N)[10][25],";
-                LstCampos += "horaingreso(T)(L)(N)(G)(N)[5][15],";
-                LstCampos += "Servicio(T)(L)(N)(G)(N)[10][25],";
-                LstCampos += "estado(T)(L)(N)(G)(N)[10][25],";
-                LstCampos += "fechaegreso(T)(L)(N)(G)(N)[10][25],";
-                LstCampos += "horaEgreso(T)(L)(N)(G)(N)[10][25],";
-                DesingTabla('gvPrescripcion', LstCampos, data, true, false, false, false);
+            var res = JSON.parse(data);
+            $("#gvCasosPaciente").empty();
+            var temp = "<table class='table table-hover table-striped table-bordered'><tr><th>No Caso</th><th>No Admision</th><th>Fecha Ingreso</th><th>Hora Ingreso</th><th>Servicio</th><th>Estado</th><th>Fecha Egreso</th><th>Hora Egreso</th><th>EstAdm</th><th>No Autorizacion</th><th>Autorizado por</th></tr>";
+            if (res === 0) {
+                // Valores en nulo o 0
+                temp += "<tr> No se encontraron datos...";
+                temp += "</tr>";
 
             }
             else {
-                alert("Datos en Blanco");
+
+                $(res).each(function () {
+                    temp += "<tr>";
+                    temp += "<td><label0>" + this.Nocuenta + "</label0></td>";
+                    temp += "<td><label1>" + this.NoAdmision + "</label1></td>";
+                    temp += "<td><label2>" + this.fechaIngreso + "</label2></td>";
+                    temp += "<td><label3>" + this.horaingreso + "</label3></td>";
+                    temp += "<td><label4>" + this.Servicio + "</label4></td>";
+                    temp += "<td><label5>" + this.estado + "</label5></td>";
+                    temp += "<td><label6>" + this.fechaegreso + "</label6></td>";
+                    temp += "<td><label7>" + this.horaEgreso + "</label7></td>";
+                    temp += "<td><label9>" + this.EstAdm + "</label9></td>";
+                    temp += "<td><label10>" + this.no_Autorizacion + "</label10></td>";
+                    temp += "<td><label11>" + this.autorizado_Por + "</label11></td>";
+                    temp += "</tr>";
+                });
+
+                temp += "</table>";
+                $("#gvCasosPaciente").append(temp);
             }
 
         },
         error: function (xhr, status, error) {
-            alert("ERROR: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+            alert("ERROR: " + status + " " + error + " " + xhr.status + " " + xhr.statusText);
         }
     });
 

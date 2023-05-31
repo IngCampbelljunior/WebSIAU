@@ -106,26 +106,21 @@ namespace LiloSoft.Siesa.Interfaz
 
             List<Parametro> lstPars = new List<Parametro>();
             lstPars.AddParametro("empresa", Empresa);
-            //lstPars.AddParametro("NoCaso", NoCaso);
-            //lstPars.AddParametro("Usuario", Usuario);
-
+            
             return base.ExecuteGetLista<ConsultaSolicitudPendiente>(sql, false, lstPars.ToArray());
 
         }
 
         public List<ConsultaCasosPaciente> GetCasosPaciente(string Empresa, string criterio)
         {
-            string sql = @"SELECT c.empresa, c.Nocuenta, a.NoAdmision,
-            a.fechaIngreso, a.horaingreso, s.nombre Servicio,
-            c.estado, a.fechaegreso, a.horaEgreso, a.estado estadoIng,
-            a.Estado EstAdm, st.nombre servTras, a.no_Autorizacion, a.autorizado_Por
-            FROM cuenta AS c INNER JOIN Admisiones AS a ON
-            c.empresa = a.empresa AND c.nocuenta = a.nocuenta
-            INNER JOIN Servicios_Clinica AS s ON
-            c.empresa = s.empresa AND a.codservicio = s.Cod_Servicio
-            LEFT OUTER JOIN Admisiones AT ON a.empresa = at.empresa AND at.noadmision = a.noadmisionTras
-            LEFT OUTER JOIN Servicios_Clinica st ON at.empresa = st.empresa AND at.codservicio = st.Cod_Servicio
-            WHERE c.nohistoria =:criterio AND a.estado <> 'X' AND c.empresa =:Empresa;";
+            string sql = @"SELECT c.Nocuenta, c.NoAdm_inicial NoAdmision,
+ a.fechaIngreso, a.horaingreso, s.nombre Servicio,
+   c.estado, IFNULL(a.fechaegreso,'') fechaegreso, IFNULL(a.horaEgreso,'') horaEgreso, 
+  IFNULL(a.Estado,'') EstAdm, IFNULL(a.no_Autorizacion,'') no_Autorizacion, IFNULL(a.autorizado_Por,'') autorizado_Por
+    FROM cuenta AS c 
+  INNER JOIN Admisiones AS a ON c.empresa = a.empresa AND c.nocuenta = a.nocuenta AND c.NoAdm_inicial = a.NoAdmision 
+  INNER JOIN Servicios_Clinica AS s ON c.empresa = s.empresa AND a.codservicio  = s.Cod_Servicio
+WHERE c.nohistoria=:criterio AND c.estado <> 'X' AND c.empresa = :Empresa;";
             
 
             List<Parametro> lstPars = new List<Parametro>();
@@ -470,8 +465,10 @@ namespace LiloSoft.Siesa.Interfaz
         public string estado { get; set; }
         public Fecha fechaegreso { get; set; }
         public string horaEgreso { get; set; }
-        public string empresa { get; set; }
-        public string estadoIng { get; set; }
+        public string EstAdm { get; set; }
+        public string no_Autorizacion { get; set; }
+        public string autorizado_Por { get; set; }
+
     }
     #endregion
 

@@ -102,6 +102,14 @@ namespace WebSIAU.Controllers
             return View();
         }
 
+        public ActionResult ConsultarCasosPaciente()
+        {
+            var codigoEmp = (string)Session["CodEmpresa"];
+            var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
+            List<Entidades> result = dataBase.GetAseguradoras(codigoEmp);
+            ViewBag.aseguradora = new SelectList(result, "nitentidad", "nombre_entidad");
+            return View();
+        }
         //[HttpPost]
         //public ActionResult LovDatosSolicitud()
         //{
@@ -188,14 +196,14 @@ namespace WebSIAU.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetCasosPaciente(string criterio)
+        public ActionResult GetCasosPaciente(string criterio)
         {
            
             List<SelectListItem> li = new List<SelectListItem>();
             var dataBase = new ConsultasEsculapioDB(SqlDbMysql);
             var codigoEmp = (string)Session["CodEmpresa"];
 
-            List<ConsultaCasosPaciente> result = dataBase.GetCasosPaciente(codigoEmp, criterio);
+            List<ConsultaCasosPaciente> result = dataBase.GetCasosPaciente(codigoEmp,criterio);
 
             List<ConsultaCasosPaciente> model = new List<ConsultaCasosPaciente>();
             foreach (ConsultaCasosPaciente i in result)
@@ -210,9 +218,9 @@ namespace WebSIAU.Controllers
                     estado = i.estado,
                     fechaegreso = i.fechaegreso,
                     horaEgreso = i.horaEgreso,
-                    empresa = i.empresa,
-                    estadoIng = i.estadoIng,
-
+                    EstAdm = i.EstAdm,
+                    no_Autorizacion = i.no_Autorizacion,
+                    autorizado_Por = i.autorizado_Por
                 };
                 model.Add(docEVM);
             }
